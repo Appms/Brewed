@@ -16,6 +16,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name=".activities.GeographicalResultsActivity"
+            android:label="@string/title_activity_geographical_results" >
+        </activity>
+        <activity
+            android:name=".activities.TraditionalResultsActivity"
+            android:label="@string/title_activity_traditional_results" >
+        </activity>
+        <activity
+            android:name=".activities.BeerActivity"
+            android:label="@string/title_activity_beer" >
+        </activity>
+        <activity
+            android:name=".network.BreweryDB"
+            android:label="@string/title_activity_brewery_db" >
+        </activity>
     </application>
 
 </manifest>
