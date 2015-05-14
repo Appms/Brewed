@@ -1,0 +1,24 @@
+Interfaces:
+ -IView
+ -IModel
+ -IDatabase
+ -ResponseReceiver
+
+Model:
+ -Data Containers:
+  *Beer
+  *BeersResults
+
+Viewmodel
+
+Activities:
+ -SplashActivity
+ -MainActivity
+ -GeographicalResultsActivity
+ -TraditionalResultsActivity
+ -BeerActivity
+
+NetworkUtilities:
+ -JSONParser
+ -NetworkHelper
+ -BreweryDB
