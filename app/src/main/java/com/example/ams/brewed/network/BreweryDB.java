@@ -69,9 +69,7 @@ public class BreweryDB implements IBrewery {
             }
 
             @Override
-            public void onErrorReceived(String message) {
-
-            }
+            public void onErrorReceived(String message) {receiver.onErrorReceived(message);}
         });
 
     }
