@@ -19,12 +19,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="475dp"
         android:id="@+id/scrollView"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
         <LinearLayout
@@ -52,7 +50,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Alcohol by volume"
+                android:text="Established"
                 android:id="@+id/textView2"
                 android:layout_marginTop="20dp"
                 android:textSize="30dp"
@@ -63,8 +61,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0%"
-                android:id="@+id/textAlcohol"
+                android:text="1994"
+                android:id="@+id/textEstablished"
                 android:layout_marginTop="0dp"
                 android:textSize="30dp"
                 android:layout_alignTop="@+id/scrollView"
@@ -73,7 +71,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Availability"
+                android:text="Website"
                 android:id="@+id/textView3"
                 android:layout_marginTop="20dp"
                 android:textSize="30dp"
@@ -84,54 +82,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="All year around"
-                android:id="@+id/textAvailability"
+                android:text="www.google.es"
+                android:id="@+id/textWebsite"
                 android:layout_marginTop="0dp"
                 android:textSize="30dp"
                 android:layout_alignTop="@+id/scrollView"
                 android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Style"
-                android:id="@+id/textView4"
-                android:textSize="30dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:textStyle="bold|italic" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="So nice"
-                android:id="@+id/textStyle"
-                android:textSize="30dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                android:id="@+id/textView5"
-                android:textSize="30dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:textStyle="bold|italic" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="This is a long description to check multiple lines behaviour"
-                android:id="@+id/textDescription"
-                android:textSize="30dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp" />
 
         </LinearLayout>
     </ScrollView>
