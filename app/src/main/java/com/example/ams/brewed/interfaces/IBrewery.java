@@ -1,5 +1,7 @@
 package com.example.ams.brewed.interfaces;
 
+import android.content.Context;
+
 import com.example.ams.brewed.data.Beer;
 import com.example.ams.brewed.data.Brewery;
 
@@ -7,7 +9,7 @@ import com.example.ams.brewed.data.Brewery;
  * Created by al264101 on 21/05/15.
  */
 public interface IBrewery {
-
+    Context getNetworkContext();
     void getBeerSearch(String name, final ResponseReceiver<Beer[]> receiver);
     void getRandomBeer(final ResponseReceiver<Beer> receiver);
     void getBrewerySearch(String name, final ResponseReceiver<Brewery[]> receiver);

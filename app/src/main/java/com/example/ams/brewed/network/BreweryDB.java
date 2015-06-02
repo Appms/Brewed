@@ -1,5 +1,7 @@
 package com.example.ams.brewed.network;
 
+import android.content.Context;
+
 import com.example.ams.brewed.data.Beer;
 import com.example.ams.brewed.data.Brewery;
 import com.example.ams.brewed.interfaces.IBrewery;
@@ -26,6 +28,10 @@ public class BreweryDB implements IBrewery {
 
     public BreweryDB(NetworkHelper networkHelper) {
         this.networkHelper = networkHelper;
+    }
+
+    public Context getNetworkContext(){
+        return networkHelper.getContext();
     }
 
     @Override
