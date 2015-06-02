@@ -1,7 +1,6 @@
 package com.example.ams.brewed;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,38 +8,36 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jvilaruji.weather.R;
-import com.jvilaruji.weather.weatherdata.WeatherPrediction;
+import com.example.ams.brewed.data.SearchElement;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by jvilar on 4/04/15.
+ * Created al264101 on 02/06/15.
  */
-public class searchAdapter extends ArrayAdapter<WeatherPrediction> {
+public class SearchAdapter extends ArrayAdapter<SearchElement> {
 
-    public searchAdapter(Context context, int resource) {
+    public SearchAdapter(Context context, int resource) {
         super(context, resource);
     }
 
-    public searchAdapter(Context context, int resource, int textViewResourceId) {
+    public SearchAdapter(Context context, int resource, int textViewResourceId) {
         super(context, resource, textViewResourceId);
     }
 
-    public searchAdapter(Context context, int resource, WeatherPrediction[] objects) {
+    public SearchAdapter(Context context, int resource, SearchElement[] objects) {
         super(context, resource, objects);
     }
 
-    public searchAdapter(Context context, int resource, int textViewResourceId, WeatherPrediction[] objects) {
+    public SearchAdapter(Context context, int resource, int textViewResourceId, SearchElement[] objects) {
         super(context, resource, textViewResourceId, objects);
     }
 
-    public searchAdapter(Context context, int resource, List<WeatherPrediction> objects) {
+    public SearchAdapter(Context context, int resource, List<SearchElement> objects) {
         super(context, resource, objects);
     }
 
-    public searchAdapter(Context context, int resource, int textViewResourceId, List<WeatherPrediction> objects) {
+    public SearchAdapter(Context context, int resource, int textViewResourceId, List<SearchElement> objects) {
         super(context, resource, textViewResourceId, objects);
     }
 
@@ -51,30 +48,19 @@ public class searchAdapter extends ArrayAdapter<WeatherPrediction> {
 
         if (view == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            view = inflater.inflate(R.layout.weather_prediction_row, null);
+            view = inflater.inflate(R.layout.search_element, null);
         }
 
-        WeatherPrediction weatherPrediction = getItem(position);
-        if (weatherPrediction != null) {
-            TextView label = (TextView) view.findViewById(R.id.predictionLabel);
-            ImageView icon = (ImageView) view.findViewById(R.id.predictionIcon);
+        SearchElement searchElement = getItem(position);
+        if (searchElement != null) {
+            TextView name = (TextView) view.findViewById(R.id.elementName);
+            ImageView icon = (ImageView) view.findViewById(R.id.elementIcon);
 
-            if (label != null) {
-                Calendar when = weatherPrediction.getTimeStamp();
-                String text = String.format("%02d/%02d: %.1f, %.1f, %s",
-                        when.get(Calendar.DAY_OF_MONTH),
-                        when.get(Calendar.MONTH)+1,
-                        weatherPrediction.getMinTemperature(),
-                        weatherPrediction.getMaxTemperature(),
-                        weatherPrediction.getCondition().toString()
-                );
-                label.setText(text);
+            if (name != null) {
+                name.setText(searchElement.getName());
             }
             if (icon != null) {
-                String mDrawableName = "icon" + weatherPrediction.getCondition().getIcon();
-                Resources resources = context.getResources();
-                int resID = resources.getIdentifier(mDrawableName, "drawable", context.getPackageName());
-                icon.setImageResource(resID);
+                icon.setImageBitmap(searchElement.getLabel_icon());
             }
         }
         return view;
