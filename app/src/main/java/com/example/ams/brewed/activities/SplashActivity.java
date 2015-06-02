@@ -27,7 +27,7 @@ public class SplashActivity extends Activity {
     private static final String DEF_LOCATION = "Castellon";
 
     private boolean timeoutEnded = false;
-    private boolean weatherReceived = false;
+    private boolean responseReceived = false;
     private Viewmodel viewmodel;
 
     @Override
@@ -42,15 +42,15 @@ public class SplashActivity extends Activity {
         viewmodel = viewmodel.buildInstance(new Model(new OpenWeather(new NetworkHelper(getApplicationContext()))), preferences.getString("Location",DEF_LOCATION), new ResponseReceiver<String>() {
             @Override
             public void onResponseReceived(String response) {
-                weatherReceived = true;
-                startWeatherActivity();
+                responseReceived = true;
+                startMainActivity();
             }
 
             @Override
             public void onErrorReceived(String message) {
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                weatherReceived = true;
-                startWeatherActivity();
+                responseReceived = true;
+                startMainActivity();
             }
         });
 
@@ -59,13 +59,13 @@ public class SplashActivity extends Activity {
             @Override
             public void run() {
                 timeoutEnded = true;
-                startWeatherActivity();
+                startMainActivity();
             }
         }, TIMEOUT);
     }
 
-    private void startWeatherActivity() {
-        if (!timeoutEnded || !weatherReceived)
+    private void startMainActivity() {
+        if (!timeoutEnded || !responseReceived)
             return;
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

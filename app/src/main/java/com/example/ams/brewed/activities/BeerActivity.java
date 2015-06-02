@@ -5,9 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.ams.brewed.IBeerView;
 import com.example.ams.brewed.R;
 
-public class BeerActivity extends ActionBarActivity {
+public class BeerActivity extends ActionBarActivity implements IBeerView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,5 +37,15 @@ public class BeerActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void changeBackgroundColorBySRM() {
+
+    }
+
+    @Override
+    public void displayInfo() {
+
     }
 }
