@@ -1,6 +1,6 @@
 package com.example.ams.brewed.data;
 
-import android.media.Image;
+import android.graphics.Bitmap;
 
 /**
  * Created by al264101 on 21/05/15.
@@ -12,10 +12,10 @@ public class Beer {
     private final String style;
     private final String availability;
     private final String description;
-    private final Image label_icon;
-    private final Image label_medium;
+    private final Bitmap label_icon;
+    private final Bitmap label_medium;
 
-    public Beer(String name, Double alcoholByVolume, int srmColor, String style, String availability, String description, Image label_icon, Image label_medium) {
+    public Beer(String name, Double alcoholByVolume, int srmColor, String style, String availability, String description, Bitmap label_icon, Bitmap label_medium) {
         this.name = name;
         this.alcoholByVolume = alcoholByVolume;
         this.srmColor = srmColor;
@@ -50,11 +50,11 @@ public class Beer {
         return description;
     }
 
-    public Image getLabel_icon() {
+    public Bitmap getLabel_icon() {
         return label_icon;
     }
 
-    public Image getLabel_medium() {
+    public Bitmap getLabel_medium() {
         return label_medium;
     }
 }
