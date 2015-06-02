@@ -41,6 +41,8 @@ public class SearchAdapter extends ArrayAdapter<SearchElement> {
         super(context, resource, textViewResourceId, objects);
     }
 
+
+    
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
