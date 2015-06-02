@@ -14,6 +14,7 @@ import com.example.ams.brewed.Model;
 import com.example.ams.brewed.R;
 import com.example.ams.brewed.Viewmodel;
 import com.example.ams.brewed.interfaces.ResponseReceiver;
+import com.example.ams.brewed.network.BreweryDB;
 import com.example.ams.brewed.network.NetworkHelper;
 
 import java.util.Timer;
@@ -39,7 +40,7 @@ public class SplashActivity extends Activity {
 
         SharedPreferences preferences = getSharedPreferences(PREFERENCES_ID, MODE_PRIVATE);
 
-        viewmodel = viewmodel.buildInstance(new Model(new OpenWeather(new NetworkHelper(getApplicationContext()))), preferences.getString("Location",DEF_LOCATION), new ResponseReceiver<String>() {
+        viewmodel = viewmodel.buildInstance(new Model(new BreweryDB(new NetworkHelper(getApplicationContext()))), preferences.getString("Location",DEF_LOCATION), new ResponseReceiver<String>() {
             @Override
             public void onResponseReceived(String response) {
                 responseReceived = true;
