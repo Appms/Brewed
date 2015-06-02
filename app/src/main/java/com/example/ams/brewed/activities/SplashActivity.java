@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.example.ams.brewed.Model;
+import com.example.ams.brewed.R;
 import com.example.ams.brewed.Viewmodel;
 import com.example.ams.brewed.interfaces.ResponseReceiver;
 import com.example.ams.brewed.network.NetworkHelper;
