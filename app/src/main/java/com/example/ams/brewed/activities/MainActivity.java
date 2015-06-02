@@ -42,11 +42,6 @@ public class MainActivity extends ActionBarActivity implements IMainView {
     private ToggleButton hourlyButton;
     private TextView warningLabel;
 
-    //Fragments
-    private CurrentWeatherFragment currentWeatherFragment;
-    private WeatherForecastFragment weatherForecastFragment;
-    private HourlyForecastFragment hourlyForecastFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,13 +72,13 @@ public class MainActivity extends ActionBarActivity implements IMainView {
 
         return super.onOptionsItemSelected(item);
     }
-
+    */
     protected void onResume()
     {
         super.onResume();
         viewmodel.connectView(this);
     }
-
+    /*
     protected void onSaveInstanceState(Location location)
     {
         //super.onSaveInstanceState(location);
@@ -280,6 +275,8 @@ public class MainActivity extends ActionBarActivity implements IMainView {
 
     @Override
     public void onPressedBeer() {
+
+
 
     }
 
