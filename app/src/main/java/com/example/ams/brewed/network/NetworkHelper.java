@@ -23,6 +23,10 @@ public class NetworkHelper {
         this.context = context;
     }
 
+    public Context getContext(){
+        return context;
+    }
+
     private boolean isNetworkConnected(){
         ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
