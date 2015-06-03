@@ -7,8 +7,18 @@ import com.example.ams.brewed.data.Beer;
  */
 public interface IBeerView {
 
+<<<<<<< HEAD
     void displayInfo(Beer beer);
     void startSearchingProgress();
     void stopSearchingProgress();
+=======
+    void changeBackgroundColorBySRM();
+    void displayInfo(Beer beer);
 
+    void startShowInProgress();
+
+    void stopShowSearchInProgress();
+>>>>>>> origin/master
+
+    void showError(String message);
 }
