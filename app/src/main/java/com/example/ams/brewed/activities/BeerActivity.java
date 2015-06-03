@@ -46,7 +46,7 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         textAvailability = (TextView) findViewById(R.id.textAvailability);
         textStyle = (TextView) findViewById(R.id.textStyle);
         textDescription = (TextView) findViewById(R.id.textDescription);
-        imageLogo = (ImageView) findViewById(R.id.imageLogo);
+        imageLogo = (ImageView) findViewById(R.id.beerLogo);
 
         progressLoading = (ProgressBar) findViewById(R.id.progressLoading);
     }

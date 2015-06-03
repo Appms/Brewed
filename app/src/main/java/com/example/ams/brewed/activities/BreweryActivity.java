@@ -36,7 +36,7 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView{
         textName = (TextView) findViewById(R.id.textName);
         textEstablished = (TextView) findViewById(R.id.textEstablished);
         textWebsite = (TextView) findViewById(R.id.textWebsite);
-        imageLogo = (ImageView) findViewById(R.id.imageLogo);
+        imageLogo = (ImageView) findViewById(R.id.breweryLogo);
 
         progressLoading = (ProgressBar) findViewById(R.id.progressLoading);
 
