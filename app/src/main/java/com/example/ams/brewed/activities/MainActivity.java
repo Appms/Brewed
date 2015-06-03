@@ -1,22 +1,17 @@
 package com.example.ams.brewed.activities;
 
-import android.app.FragmentManager;
-import android.location.Location;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.support.v7.app.ActionBarActivity;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.example.ams.brewed.IMainView;
+import com.example.ams.brewed.R;
+import com.example.ams.brewed.interfaces.IMainView;
 import com.example.ams.brewed.Viewmodel;
-import com.example.ams.brewed.interfaces.IView;
 
 public class MainActivity extends ActionBarActivity implements IMainView {
 

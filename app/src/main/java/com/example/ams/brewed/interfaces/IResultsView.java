@@ -1,4 +1,4 @@
-package com.example.ams.brewed;
+package com.example.ams.brewed.interfaces;
 
 import com.example.ams.brewed.data.Beer;
 import com.example.ams.brewed.data.Brewery;

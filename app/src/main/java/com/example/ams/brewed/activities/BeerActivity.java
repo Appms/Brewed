@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.ams.brewed.IBeerView;
+import com.example.ams.brewed.interfaces.IBeerView;
 import com.example.ams.brewed.R;
 
 

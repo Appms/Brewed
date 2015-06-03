@@ -2,7 +2,11 @@ package com.example.ams.brewed;
 
 import com.example.ams.brewed.data.Beer;
 import com.example.ams.brewed.data.Brewery;
+import com.example.ams.brewed.interfaces.IBeerView;
+import com.example.ams.brewed.interfaces.IBreweryView;
+import com.example.ams.brewed.interfaces.IMainView;
 import com.example.ams.brewed.interfaces.IModel;
+import com.example.ams.brewed.interfaces.IResultsView;
 import com.example.ams.brewed.interfaces.ResponseReceiver;
 
 /**

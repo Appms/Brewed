@@ -1,4 +1,4 @@
-package com.example.ams.brewed;
+package com.example.ams.brewed.interfaces;
 
 /**
  * Created by PC on 02/06/2015.

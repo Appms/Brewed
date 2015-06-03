@@ -1,6 +1,6 @@
 package com.example.ams.brewed.activities;
 
-import com.example.ams.brewed.IResultsView;
+import com.example.ams.brewed.interfaces.IResultsView;
 import com.example.ams.brewed.data.Beer;
 
 /**
