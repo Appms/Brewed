@@ -10,4 +10,7 @@ public interface IMainView {
     void onPressedBrewery();
     void onPressedGeographicalBreweries();
 
+    void changeToResultsActivity();
+
+    void changeToBeerActivity();
 }

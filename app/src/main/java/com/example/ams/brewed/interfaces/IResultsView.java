@@ -25,4 +25,8 @@ public interface IResultsView {
     void warnBadNetwork();
 
     void showError(String message);
+
+    void changeToBeerActivity();
+
+    void changeToBreweryActivity();
 }

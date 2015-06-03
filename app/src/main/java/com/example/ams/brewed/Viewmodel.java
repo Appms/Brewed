@@ -1,5 +1,10 @@
 package com.example.ams.brewed;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+
+import com.example.ams.brewed.activities.ResultsActivity;
 import com.example.ams.brewed.data.Beer;
 import com.example.ams.brewed.data.Brewery;
 import com.example.ams.brewed.interfaces.IBeerView;
@@ -15,6 +20,10 @@ import com.example.ams.brewed.interfaces.ResponseReceiver;
 
 public class Viewmodel {
 
+    /*public static enum ActivityType{
+        MAIN, SEARCH, BEER, BREWERY
+    }*/
+
     private IMainView mainView;
     private IResultsView resultsView;
     private IBeerView beerView;
@@ -27,7 +36,7 @@ public class Viewmodel {
     private boolean loadingResults;
     private boolean loadingRandomBeer;
 
-    //VARIABLE QUE ME DICE QUE ACTIVITY HE DE VER
+    //private ActivityType currentActivity = ActivityType.MAIN;
 
     private Viewmodel (IModel model){
         this.model = model;
@@ -70,6 +79,31 @@ public class Viewmodel {
         });
     }
 
+    public void onRandomBeerSearchRequested(){
+        if(beerView == null) return;
+
+        beerView.startShowInProgress();
+        loadingRandomBeer = true;
+
+        model.getRandomBeer(new ResponseReceiver<Beer>() {
+            @Override
+            public void onResponseReceived(Beer response) {
+                beerView.stopShowSearchInProgress();
+                loadingRandomBeer = false;
+                beerView.displayInfo(response);
+            }
+
+            @Override
+            public void onErrorReceived(String message) {
+                beerView.stopShowSearchInProgress();
+                loadingRandomBeer = false;
+                beerView.displayInfo(null);
+                beerView.showError(message);
+            }
+        });
+
+    }
+
     public void onBrewerySearchRequested(final String criteria){
         if(resultsView == null) return;
 
@@ -92,6 +126,27 @@ public class Viewmodel {
                 resultsView.showError(message);
             }
         });
+    }
+
+    //CHANGING BETWEEN ACTIVITIES
+
+    public void changeToResultsActivity(){
+        mainView.changeToResultsActivity();
+    }
+
+    public void changeToBeerActivity(Beer beer){
+        resultsView.changeToBeerActivity();
+        beerView.displayInfo(beer);
+    }
+
+    public void changeToRandomBeerActivity(){
+        mainView.changeToBeerActivity();
+        onRandomBeerSearchRequested();
+    }
+
+    public void changeToBreweryActivity(Brewery brewery){
+        resultsView.changeToBreweryActivity();
+        breweryView.displayInfo(brewery);
     }
 
 }
