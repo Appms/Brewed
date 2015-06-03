@@ -25,7 +25,9 @@
         android:layout_marginTop="125dp"
         android:background="#ffbb9f72"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:onClick="onPressedBeer" />
 
     <ImageButton
         android:layout_width="300dp"
@@ -35,7 +37,9 @@
         android:layout_below="@+id/imageLogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="#ffbb9f72" />
+        android:background="#ffbb9f72"
+        android:onClick="onPressedRandomBeer"
+        android:clickable="true" />
 
     <ImageButton
         android:layout_width="300dp"
@@ -45,7 +49,9 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/imageButton2"
         android:layout_centerHorizontal="true"
-        android:background="#ffbb9f72" />
+        android:background="#ffbb9f72"
+        android:onClick="onPressedBrewery"
+        android:clickable="true" />
 
     <ImageButton
         android:layout_width="300dp"
@@ -55,5 +61,7 @@
         android:layout_below="@+id/imageButton3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="#ffbb9f72" />
+        android:background="#ffbb9f72"
+        android:onClick="onPressedGeographicalBreweries"
+        android:clickable="true" />
 </RelativeLayout>

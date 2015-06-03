@@ -97,7 +97,9 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     }
 
     public void showError(String message) {
+
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
     }
 
 }

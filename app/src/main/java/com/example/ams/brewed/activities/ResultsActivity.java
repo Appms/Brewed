@@ -3,6 +3,7 @@ package com.example.ams.brewed.activities;
 import android.os.Bundle;
 
 import com.example.ams.brewed.Viewmodel;
+import com.example.ams.brewed.data.Brewery;
 import com.example.ams.brewed.interfaces.IResultsView;
 import com.example.ams.brewed.data.Beer;
 
@@ -43,6 +44,41 @@ public class ResultsActivity extends ActionBarActivity implements IResultsView {
     @Override
     public void searchGeographicalBreweries() {
 
+    }
+
+    @Override
+    public void showBeerResults(Beer[] response) {
+
+    }
+
+    @Override
+    public void showBreweryResults(Brewery[] response) {
+
+    }
+
+    @Override
+    public void askForSearchCriteria() {
+
+    }
+
+    @Override
+    public void startShowSearchInProgress() {
+
+    }
+
+    @Override
+    public void stopShowSearchInProgress() {
+
+    }
+
+    @Override
+    public void warnBadNetwork() {
+
+    }
+
+    @Override
+    public void showError(String message) {
+        
     }
 
     @Override
