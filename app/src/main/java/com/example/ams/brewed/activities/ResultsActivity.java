@@ -1,7 +1,9 @@
 package com.example.ams.brewed.activities;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 
+import com.example.ams.brewed.R;
 import com.example.ams.brewed.Viewmodel;
 import com.example.ams.brewed.data.Brewery;
 import com.example.ams.brewed.interfaces.IResultsView;
@@ -12,12 +14,15 @@ import com.example.ams.brewed.data.Beer;
  */
 public class ResultsActivity extends ActionBarActivity implements IResultsView {
 
+    Viewmodel viewmodel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initializeActivity();
+        setContentView(R.layout.activity_results);
+        //initializeActivity();
         viewmodel = Viewmodel.getInstance();
+        viewmodel.storeResultsActivity(this);
     }
 
     protected void onResume()
@@ -82,7 +87,18 @@ public class ResultsActivity extends ActionBarActivity implements IResultsView {
     }
 
     @Override
-    public void showResults(Beer[] response) {
+    public void changeToBeerActivity() {
 
     }
+
+    @Override
+    public void changeToBreweryActivity() {
+
+    }
+
+    @Override
+    public void changeSearchType(Viewmodel.SearchType searchType) {
+
+    }
+
 }

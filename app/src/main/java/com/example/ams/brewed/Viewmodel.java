@@ -20,9 +20,9 @@ import com.example.ams.brewed.interfaces.ResponseReceiver;
 
 public class Viewmodel {
 
-    /*public static enum ActivityType{
-        MAIN, SEARCH, BEER, BREWERY
-    }*/
+    public static enum SearchType{
+        BEER, BREWERY, GEO
+    }
 
     private IMainView mainView;
     private IResultsView resultsView;
@@ -47,6 +47,24 @@ public class Viewmodel {
     public static Viewmodel buildInstance(final IModel model){
         instance = new Viewmodel(model);
         return instance;
+    }
+
+    //UPDATING ACTIVITIES WHEN CREATING THEM
+
+    public void storeMainActivity(IMainView mainActivityView){
+        mainView = mainActivityView;
+    }
+
+    public void storeResultsActivity(IResultsView resultsActivityView){
+        resultsView = resultsActivityView;
+    }
+
+    public void storeBeerActivity(IBeerView beerActivityView){
+        beerView = beerActivityView;
+    }
+
+    public void storeBreweryActivity(IBreweryView breweryActivityView){
+        breweryView = breweryActivityView;
     }
 
     //SEARCHING BEERS/BREWERIES
@@ -79,6 +97,54 @@ public class Viewmodel {
         });
     }
 
+    public void onBrewerySearchRequested(final String criteria){
+        if(resultsView == null) return;
+
+        resultsView.startShowSearchInProgress();
+        loadingResults = true;
+
+        model.getBrewerySearch(criteria, new ResponseReceiver<Brewery[]>() {
+            @Override
+            public void onResponseReceived(Brewery[] response) {
+                resultsView.stopShowSearchInProgress();
+                loadingResults = false;
+                resultsView.showBreweryResults(response);
+            }
+
+            @Override
+            public void onErrorReceived(String message) {
+                resultsView.stopShowSearchInProgress();
+                loadingResults = false;
+                resultsView.showBreweryResults(null);
+                resultsView.showError(message);
+            }
+        });
+    }
+
+    public void onGeographicalBreweriesSerchRequested(){
+        if(resultsView == null) return;
+
+        resultsView.startShowSearchInProgress();
+        loadingResults = true;
+
+        model.getGeographicalBreweries(new ResponseReceiver<Brewery[]>() {
+            @Override
+            public void onResponseReceived(Brewery[] response) {
+                resultsView.stopShowSearchInProgress();
+                loadingResults = false;
+                resultsView.showBreweryResults(response);
+            }
+
+            @Override
+            public void onErrorReceived(String message) {
+                resultsView.stopShowSearchInProgress();
+                loadingResults = false;
+                resultsView.showBreweryResults(null);
+                resultsView.showError(message);
+            }
+        });
+    }
+
     public void onRandomBeerSearchRequested(){
         if(beerView == null) return;
 
@@ -104,34 +170,12 @@ public class Viewmodel {
 
     }
 
-    public void onBrewerySearchRequested(final String criteria){
-        if(resultsView == null) return;
-
-        resultsView.startShowSearchInProgress();
-        loadingResults = true;
-
-        model.getBrewerySearch(criteria, new ResponseReceiver<Brewery[]>() {
-            @Override
-            public void onResponseReceived(Brewery[] response) {
-                resultsView.stopShowSearchInProgress();
-                loadingResults = false;
-                resultsView.showBreweryResults(response);
-            }
-
-            @Override
-            public void onErrorReceived(String message) {
-                resultsView.stopShowSearchInProgress();
-                loadingResults = false;
-                resultsView.showBreweryResults(null);
-                resultsView.showError(message);
-            }
-        });
-    }
-
     //CHANGING BETWEEN ACTIVITIES
 
-    public void changeToResultsActivity(){
+    public void changeToResultsActivity(SearchType searchType){
         mainView.changeToResultsActivity();
+        resultsView.changeSearchType(searchType);
+        if(searchType == SearchType.GEO) onGeographicalBreweriesSerchRequested();
     }
 
     public void changeToBeerActivity(Beer beer){

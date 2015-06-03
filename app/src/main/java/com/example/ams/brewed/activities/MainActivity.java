@@ -1,7 +1,11 @@
 package com.example.ams.brewed.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,43 +17,26 @@ import com.example.ams.brewed.R;
 import com.example.ams.brewed.interfaces.IMainView;
 import com.example.ams.brewed.Viewmodel;
 
+import static com.example.ams.brewed.Viewmodel.*;
+import static com.example.ams.brewed.Viewmodel.SearchType.*;
+
 public class MainActivity extends ActionBarActivity implements IMainView {
 
-
-    private static final String PREFERENCES_ID = "Preferences";
-    private static final String LOCATION_ID = "Location";
-
     private Viewmodel viewmodel;
-
-    //Location views
-    private ProgressBar locationProgress;
-    private LinearLayout locationInformation;
-    private TextView locationName;
-    private TextView locationCoordinates;
-    private TextView locationTemperature;
-    private ImageView locationIcon;
-
-    //Weather views
-    private ProgressBar weatherProgress;
-    private FrameLayout weatherFragmentContainer;
-    private ToggleButton currentButton;
-    private ToggleButton forecastButton;
-    private ToggleButton hourlyButton;
-    private TextView warningLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initializeActivity();
-        viewmodel = Viewmodel.getInstance();
+        viewmodel = getInstance();
+        viewmodel.storeMainActivity(this);
     }
 
-    /*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_weather, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -67,32 +54,34 @@ public class MainActivity extends ActionBarActivity implements IMainView {
 
         return super.onOptionsItemSelected(item);
     }
-    */
+
     protected void onResume()
     {
         super.onResume();
-        viewmodel.connectView(this);
+    }
+
+    public void onPressedBeerSearch(View view) {
+        viewmodel.changeToResultsActivity(BEER);
+    }
+    public void onPressedRandomBeer(View view) {
+        viewmodel.changeToRandomBeerActivity();
+    }
+    public void onPressedBrewerySearch(View view) {
+        viewmodel.changeToResultsActivity(BREWERY);
+    }
+    public void onPressedGeographicalBreweries(View view) {
+        viewmodel.changeToResultsActivity(GEO);
     }
 
     @Override
-    public void onPressedBeer() {
-
-        viewmodel.changeToResultsActivity();
-
+    public void changeToResultsActivity() {
+        Intent intent = new Intent(getApplicationContext(),ResultsActivity.class);
+        startActivity(intent);
     }
 
     @Override
-    public void onPressedRandomBeer() {
-
-    }
-
-    @Override
-    public void onPressedBrewery() {
-
-    }
-
-    @Override
-    public void onPressedGeographicalBreweries() {
-
+    public void changeToBeerActivity() {
+        Intent intent = new Intent(getApplicationContext(),BeerActivity.class);
+        startActivity(intent);
     }
 }

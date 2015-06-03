@@ -8,13 +8,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ams.brewed.R;
+import com.example.ams.brewed.Viewmodel;
 import com.example.ams.brewed.data.Brewery;
 import com.example.ams.brewed.interfaces.IBreweryView;
 
 /**
  * Created by PC on 02/06/2015.
  */
-public class BreweryActivity extends ActionBarActivity implements IBreweryView {
+public class BreweryActivity extends ActionBarActivity implements IBreweryView{
+
+    private Viewmodel viewmodel;
 
     private TextView textName;
     private TextView textEstablished;
@@ -26,7 +29,9 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beer);
+        setContentView(R.layout.activity_brewery);
+        viewmodel = Viewmodel.getInstance();
+        viewmodel.storeBreweryActivity(this);
 
         textName = (TextView) findViewById(R.id.textName);
         textEstablished = (TextView) findViewById(R.id.textEstablished);
@@ -40,7 +45,6 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView {
     protected void onResume()
     {
         super.onResume();
-        //viewmodel.connectView(this);
     }
 
     @Override
@@ -51,10 +55,5 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView {
         textWebsite.setText(brewery.getWebsite());
         imageLogo.setImageBitmap(brewery.getLabel_medium());
 
-    }
-
-    // ESTO NO DEBERIA LLAMARSE, PERO POR SI ACASO
-    public void showError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

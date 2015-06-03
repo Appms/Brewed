@@ -25,10 +25,8 @@ public class SplashActivity extends Activity {
 
     private static final int TIMEOUT = 3000;
     private static final String PREFERENCES_ID = "Preferences";
-    private static final String DEF_LOCATION = "Castellon";
 
     private boolean timeoutEnded = false;
-    private boolean responseReceived = false;
     private Viewmodel viewmodel;
 
     @Override
@@ -52,23 +50,15 @@ public class SplashActivity extends Activity {
         }, TIMEOUT);
     }
 
-    protected void onResume()
-    {
-        // EN ESTE CASO NO DEBERIA LLAMARSE A onResume, PERO POR SI ACASO
-        super.onResume();
-        //viewmodel.connectView(this);
-    }
-
     private void startMainActivity() {
-        if (!timeoutEnded || !responseReceived)
+        if (!timeoutEnded)
             return;
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_splash, menu);
@@ -88,5 +78,5 @@ public class SplashActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

@@ -11,13 +11,14 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ams.brewed.Viewmodel;
 import com.example.ams.brewed.data.Beer;
 import com.example.ams.brewed.interfaces.IBeerView;
 import com.example.ams.brewed.R;
 
-
-
 public class BeerActivity extends ActionBarActivity implements IBeerView {
+
+    Viewmodel viewmodel;
 
     private RelativeLayout layoutBeer;
     private ScrollView scrollView;
@@ -34,6 +35,8 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beer);
+        viewmodel = Viewmodel.getInstance();
+        viewmodel.storeBeerActivity(this);
 
         layoutBeer = (RelativeLayout) findViewById(R.id.layoutBeer);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
@@ -51,7 +54,6 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     protected void onResume()
     {
         super.onResume();
-        //viewmodel.connectView(this);
     }
 
     private void changeBackgroundColorBySRM(int newColor) {
@@ -93,6 +95,21 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         progressLoading.setVisibility(View.INVISIBLE);
         scrollView.setVisibility(View.VISIBLE);
         imageLogo.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void changeBackgroundColorBySRM() {
+
+    }
+
+    @Override
+    public void startShowInProgress() {
+
+    }
+
+    @Override
+    public void stopShowSearchInProgress() {
 
     }
 

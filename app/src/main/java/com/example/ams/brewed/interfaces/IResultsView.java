@@ -1,5 +1,6 @@
 package com.example.ams.brewed.interfaces;
 
+import com.example.ams.brewed.Viewmodel;
 import com.example.ams.brewed.data.Beer;
 import com.example.ams.brewed.data.Brewery;
 import com.example.ams.brewed.data.SearchElement;
@@ -29,4 +30,6 @@ public interface IResultsView {
     void changeToBeerActivity();
 
     void changeToBreweryActivity();
+
+    void changeSearchType(Viewmodel.SearchType searchType);
 }

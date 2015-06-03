@@ -27,7 +27,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:clickable="true"
-        android:onClick="onPressedBeer" />
+        android:onClick="onPressedBeerSearch" />
 
     <ImageButton
         android:layout_width="300dp"
@@ -50,7 +50,7 @@
         android:layout_below="@+id/imageButton2"
         android:layout_centerHorizontal="true"
         android:background="#ffbb9f72"
-        android:onClick="onPressedBrewery"
+        android:onClick="onPressedBrewerySearch"
         android:clickable="true" />
 
     <ImageButton

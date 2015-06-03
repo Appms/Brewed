@@ -20,11 +20,9 @@ android {
 }
 
 repositories {
-    //maven{ url 'https://raw.github.com/terencejackson/JavaBreweryDbConnector/mvn-repo/'}
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.1.1'
-    //compile 'com.tj.brewerydb:connector:0.0.3'
+    compile 'com.android.support:appcompat-v7:+'
 }

@@ -5,12 +5,6 @@ package com.example.ams.brewed.interfaces;
  */
 public interface IMainView {
 
-    void onPressedBeer();
-    void onPressedRandomBeer();
-    void onPressedBrewery();
-    void onPressedGeographicalBreweries();
-
     void changeToResultsActivity();
-
     void changeToBeerActivity();
 }
