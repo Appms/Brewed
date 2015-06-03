@@ -19,6 +19,7 @@ import com.example.ams.brewed.R;
 public class BeerActivity extends ActionBarActivity implements IBeerView {
 
     Viewmodel viewmodel;
+    private Beer data;
 
     private RelativeLayout layoutBeer;
     private ScrollView scrollView;
