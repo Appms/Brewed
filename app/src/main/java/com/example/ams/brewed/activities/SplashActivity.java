@@ -52,6 +52,13 @@ public class SplashActivity extends Activity {
         }, TIMEOUT);
     }
 
+    protected void onResume()
+    {
+        // EN ESTE CASO NO DEBERIA LLAMARSE A onResume, PERO POR SI ACASO
+        super.onResume();
+        //viewmodel.connectView(this);
+    }
+
     private void startMainActivity() {
         if (!timeoutEnded || !responseReceived)
             return;

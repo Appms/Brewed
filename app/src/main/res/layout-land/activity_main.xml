@@ -20,7 +20,7 @@
     <ImageButton
         android:layout_width="200dp"
         android:layout_height="100dp"
-        android:id="@+id/imageButton"
+        android:id="@+id/imageLogo"
         android:src="@drawable/icon_splash"
         android:background="#ffbb9f72"
         android:layout_alignTop="@+id/imageButton2"
