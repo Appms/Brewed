@@ -1,210 +1,93 @@
 package com.example.ams.brewed;
 
-import android.location.Location;
-
+import com.example.ams.brewed.data.Beer;
+import com.example.ams.brewed.data.Brewery;
 import com.example.ams.brewed.interfaces.IModel;
-import com.example.ams.brewed.interfaces.IView;
 import com.example.ams.brewed.interfaces.ResponseReceiver;
 
 /**
  * Created by AMS on 14/05/2015.
  */
+
 public class Viewmodel {
 
-    private IView view;
+    private IMainView mainView;
+    private IResultsView resultsView;
+    private IBeerView beerView;
+    private IBreweryView breweryView;
+
     private IModel model;
-    private DisplayedInformation currentDisplay;
+
     private static Viewmodel instance;
 
-    private boolean loadingWeather;
-    private boolean loadingLocation;
+    private boolean loadingResults;
+    private boolean loadingRandomBeer;
 
-    private Viewmodel(IModel model){
+    //VARIABLE QUE ME DICE QUE ACTIVITY HE DE VER
+
+    private Viewmodel (IModel model){
         this.model = model;
-        currentDisplay = DisplayedInformation.CURRENT;
     }
 
-    public static Viewmodel getInstance(){ return instance; }
+    public static Viewmodel getInstance() {return instance;}
 
-    public static Viewmodel buildInstance(final IModel model, final String locationName, final ResponseReceiver<String> receiver){
+    public static Viewmodel buildInstance(final IModel model){
         instance = new Viewmodel(model);
-        model.findLocationByName(locationName, new ResponseReceiver<Location>() {
-            @Override
-            public void onResponseReceived(Location location) {
-                if (location != null){
-                    model.setCurrentLocation(location);
-                    receiver.onResponseReceived(location.getName());
-                }
-                else
-                    receiver.onErrorReceived(locationName + "not found");
-            }
-
-            @Override
-            public void onErrorReceived(String message) {
-                receiver.onErrorReceived(message);
-            }
-        });
         return instance;
     }
 
-    //CHANGE THE LOCATION
+    //SEARCHING BEERS/BREWERIES
 
-    public void onChangeLocationRequested(){view.askForLocation();}
+    public void onSearchRequested() {
+        resultsView.askForSearchCriteria();
+    }
 
-    public void onLocationNameEntered(final String location){
-        if (view == null)
-            return;
+    public void onBeerSearchRequested(final String criteria){
+        if(resultsView == null) return;
 
-        view.startShowLocationSearchInProgress();
-        view.startShowWeatherSearchInProgress();
-        loadingLocation = true;
-        loadingWeather = true;
+        resultsView.startShowSearchInProgress();
+        loadingResults = true;
 
-        model.findLocationByName(location, new ResponseReceiver<Location>() {
-
+        model.getBeerSearch(criteria, new ResponseReceiver<Beer[]>() {
             @Override
-            public void onResponseReceived(Location response) {
-                view.stopShowLocationSearchInProgress();
-                view.stopShowWeatherSearchInProgress();
-                loadingLocation = false;
-                loadingWeather = false;
-                if(response == null)
-                    view.warnWrongLocation(location);
-                else {
-                    model.setCurrentLocation(response);
-                    view.showLocation(response);
-                }
+            public void onResponseReceived(Beer[] response) {
+                resultsView.stopShowSearchInProgress();
+                loadingResults = false;
+                resultsView.showBeerResults(response);
             }
 
             @Override
             public void onErrorReceived(String message) {
-                view.stopShowLocationSearchInProgress();
-                view.stopShowWeatherSearchInProgress();
-                loadingLocation = false;
-                loadingWeather = false;
-            }
-        });}
-
-    //CHANGE THE TYPE OF DATA DISPLAYED
-
-    public void onShowCurrentWeatherRequested() {
-        currentDisplay = DisplayedInformation.CURRENT;
-        view.switchWeatherInfo(currentDisplay);
-    }
-
-    public void onShowWeatherForecastRequested() {
-        currentDisplay = DisplayedInformation.FORECAST;
-        view.switchWeatherInfo(currentDisplay);
-    }
-
-    public void onShowHourlyForecastRequested() {
-        currentDisplay = DisplayedInformation.HOURLY;
-        view.switchWeatherInfo(currentDisplay);
-    }
-
-    public void requestCurrentWeatherData(){
-        if (view == null)
-            return;
-        view.startShowWeatherSearchInProgress();
-        loadingWeather = true;
-        model.getCurrentWeatherData( new ResponseReceiver<CurrentWeatherData>() {
-            @Override
-            public void onResponseReceived(CurrentWeatherData response) {
-                view.stopShowWeatherSearchInProgress();
-                loadingWeather = false;
-                view.showCurrentWeatherData(response);
-            }
-
-            @Override
-            public void onErrorReceived(String message) {
-                view.stopShowWeatherSearchInProgress();
-                loadingWeather = false;
-                view.showCurrentWeatherData(null);
-                view.showError(message);
-            }
-        });
-
-    }
-
-    public void requestWeatherForecastData(){
-        if (view == null)
-            return;
-        view.startShowWeatherSearchInProgress();
-        loadingWeather = true;
-        model.getWeatherForecast( new ResponseReceiver<WeatherPrediction[]>() {
-            @Override
-            public void onResponseReceived(WeatherPrediction[] response) {
-                view.stopShowWeatherSearchInProgress();
-                loadingWeather = false;
-                view.showWeatherForecast(response);
-            }
-
-            @Override
-            public void onErrorReceived(String message) {
-                view.stopShowWeatherSearchInProgress();
-                loadingWeather = false;
-                view.showWeatherForecast(null);
-                view.showError(message);
+                resultsView.stopShowSearchInProgress();
+                loadingResults = false;
+                resultsView.showBeerResults(null);
+                resultsView.showError(message);
             }
         });
     }
 
-    public void requestHourlyForecastData(){
-        if (view == null)
-            return;
-        view.startShowWeatherSearchInProgress();
-        loadingWeather = true;
-        model.getHourlyForecast( new ResponseReceiver<HourlyPrediction[]>() {
+    public void onBrewerySearchRequested(final String criteria){
+        if(resultsView == null) return;
+
+        resultsView.startShowSearchInProgress();
+        loadingResults = true;
+
+        model.getBrewerySearch(criteria, new ResponseReceiver<Brewery[]>() {
             @Override
-            public void onResponseReceived(HourlyPrediction[] response) {
-                view.stopShowWeatherSearchInProgress();
-                loadingWeather = false;
-                view.showHourlyForecast(response);
+            public void onResponseReceived(Brewery[] response) {
+                resultsView.stopShowSearchInProgress();
+                loadingResults = false;
+                resultsView.showBreweryResults(response);
             }
 
             @Override
             public void onErrorReceived(String message) {
-                view.stopShowWeatherSearchInProgress();
-                loadingWeather = false;
-                view.showHourlyForecast(null);
-                view.showError(message);
+                resultsView.stopShowSearchInProgress();
+                loadingResults = false;
+                resultsView.showBreweryResults(null);
+                resultsView.showError(message);
             }
         });
     }
-
-    //VIEW METHODS
-    public void connectView(final IView view){
-        this.view = view;
-        this.view.switchWeatherInfo(currentDisplay);
-
-        if(loadingWeather)
-            this.view.startShowWeatherSearchInProgress();
-        else
-            this.view.stopShowWeatherSearchInProgress();
-        if(loadingLocation)
-            this.view.startShowLocationSearchInProgress();
-        else
-            this.view.stopShowLocationSearchInProgress();
-
-        this.view.showLocation(model.getCurrentLocation());
-
-        switch (currentDisplay){
-            case CURRENT:
-                requestCurrentWeatherData();
-                break;
-            case FORECAST:
-                requestWeatherForecastData();
-                break;
-            case HOURLY:
-                requestHourlyForecastData();
-                break;
-            default:
-                break;
-        }
-    }
-
-    public DisplayedInformation getCurrentDisplay(){return currentDisplay;}
-
-    public Location getCurrentLocation(){return model.getCurrentLocation();}
 
 }

@@ -40,20 +40,7 @@ public class SplashActivity extends Activity {
 
         SharedPreferences preferences = getSharedPreferences(PREFERENCES_ID, MODE_PRIVATE);
 
-        viewmodel = viewmodel.buildInstance(new Model(new BreweryDB(new NetworkHelper(getApplicationContext()))), preferences.getString("Location",DEF_LOCATION), new ResponseReceiver<String>() {
-            @Override
-            public void onResponseReceived(String response) {
-                responseReceived = true;
-                startMainActivity();
-            }
-
-            @Override
-            public void onErrorReceived(String message) {
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                responseReceived = true;
-                startMainActivity();
-            }
-        });
+        viewmodel = viewmodel.buildInstance(new Model(new BreweryDB(new NetworkHelper(getApplicationContext()))));
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
