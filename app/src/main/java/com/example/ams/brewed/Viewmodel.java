@@ -36,7 +36,9 @@ public class Viewmodel {
     private boolean loadingResults;
     private boolean loadingRandomBeer;
 
-    //private ActivityType currentActivity = ActivityType.MAIN;
+    public SearchType currentSearchType;
+    public Beer currentBeerData;
+    public Brewery currentBreweryData;
 
     private Viewmodel (IModel model){
         this.model = model;
@@ -174,23 +176,26 @@ public class Viewmodel {
 
     public void changeToResultsActivity(SearchType searchType){
         mainView.changeToResultsActivity();
-        resultsView.changeSearchType(searchType);
-        if(searchType == SearchType.GEO) onGeographicalBreweriesSerchRequested();
+        currentSearchType = searchType;
+        //resultsView.changeSearchType(searchType);
+        //if(searchType == SearchType.GEO) onGeographicalBreweriesSerchRequested();
     }
 
     public void changeToBeerActivity(Beer beer){
         resultsView.changeToBeerActivity();
-        beerView.displayInfo(beer);
+        currentBeerData = beer;
+        //beerView.displayInfo(beer);
     }
 
     public void changeToRandomBeerActivity(){
         mainView.changeToBeerActivity();
-        onRandomBeerSearchRequested();
+        //onRandomBeerSearchRequested();
     }
 
     public void changeToBreweryActivity(Brewery brewery){
         resultsView.changeToBreweryActivity();
-        breweryView.displayInfo(brewery);
+        currentBreweryData = brewery;
+        //breweryView.displayInfo(brewery);
     }
 
 }

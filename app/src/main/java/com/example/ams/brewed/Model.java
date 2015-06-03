@@ -56,7 +56,7 @@ public class Model implements IModel {
 
             public void onStatusChanged(String p, int status, Bundle extras) {}
         };
-        locationManager.requestLocationUpdates(bestProvider, 0, 0, locationListener);
+        locationManager.requestLocationUpdates(bestProvider, 60 * 1000, 1000, locationListener);
     }
 
     @Override

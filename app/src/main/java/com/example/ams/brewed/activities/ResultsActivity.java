@@ -15,6 +15,7 @@ import com.example.ams.brewed.data.Beer;
 public class ResultsActivity extends ActionBarActivity implements IResultsView {
 
     Viewmodel viewmodel;
+    private Viewmodel.SearchType searchType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,8 @@ public class ResultsActivity extends ActionBarActivity implements IResultsView {
         //initializeActivity();
         viewmodel = Viewmodel.getInstance();
         viewmodel.storeResultsActivity(this);
+        searchType = viewmodel.currentSearchType;
+        changeSearchType(searchType);
     }
 
     protected void onResume()
