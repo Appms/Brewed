@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:id="@+id/imageLogo"
+        android:id="@+id/imageButton1"
         android:src="@drawable/icon_splash"
         android:background="#ffbb9f72"
         android:layout_centerVertical="true"
@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:background="#ffffffff"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/imageLogo"
+            android:layout_toEndOf="@+id/imageButton1"
             android:gravity="center">
 
             <TextView
