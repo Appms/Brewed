@@ -19,10 +19,10 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView{
 
     private Viewmodel viewmodel;
 
-    private TextView textName;
-    private TextView textEstablished;
-    private TextView textWebsite;
-    private ImageView imageLogo;
+    private TextView breweryName;
+    private TextView breweryEstablished;
+    private TextView breweryWebsite;
+    private ImageView breweryLogo;
 
     private ProgressBar progressLoading;
 
@@ -33,10 +33,10 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView{
         viewmodel = Viewmodel.getInstance();
         viewmodel.storeBreweryActivity(this);
 
-        textName = (TextView) findViewById(R.id.textName);
-        textEstablished = (TextView) findViewById(R.id.textEstablished);
-        textWebsite = (TextView) findViewById(R.id.textWebsite);
-        imageLogo = (ImageView) findViewById(R.id.breweryLogo);
+        breweryName = (TextView) findViewById(R.id.textName);
+        breweryEstablished = (TextView) findViewById(R.id.textEstablished);
+        breweryWebsite = (TextView) findViewById(R.id.textWebsite);
+        breweryLogo = (ImageView) findViewById(R.id.breweryLogo);
 
         progressLoading = (ProgressBar) findViewById(R.id.progressLoading);
 
@@ -50,10 +50,10 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView{
     @Override
     public void displayInfo(Brewery brewery) {
 
-        textName.setText(brewery.getName());
-        textEstablished.setText(""+brewery.getEstablished());
-        textWebsite.setText(brewery.getWebsite());
-        imageLogo.setImageBitmap(brewery.getLabel_medium());
+        breweryName.setText(brewery.getName());
+        breweryEstablished.setText(""+brewery.getEstablished());
+        breweryWebsite.setText(brewery.getWebsite());
+        breweryLogo.setImageBitmap(brewery.getLabel_medium());
 
     }
 }

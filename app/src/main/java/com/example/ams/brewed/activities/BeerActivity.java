@@ -23,13 +23,13 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     private RelativeLayout layoutBeer;
     private ScrollView scrollView;
 
-    private TextView textName;
-    private TextView textAlcohol;
-    private TextView textAvailability;
-    private TextView textStyle;
-    private TextView textDescription;
-    private ImageView imageLogo;
-    private ProgressBar progressLoading;
+    private TextView beerName;
+    private TextView beerAlcohol;
+    private TextView beerAvailability;
+    private TextView beerStyle;
+    private TextView beerDescription;
+    private ImageView beerLogo;
+    private ProgressBar beerLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +41,14 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         layoutBeer = (RelativeLayout) findViewById(R.id.layoutBeer);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
-        textName = (TextView) findViewById(R.id.textName);
-        textAlcohol = (TextView) findViewById(R.id.textAlcohol);
-        textAvailability = (TextView) findViewById(R.id.textAvailability);
-        textStyle = (TextView) findViewById(R.id.textStyle);
-        textDescription = (TextView) findViewById(R.id.textDescription);
-        imageLogo = (ImageView) findViewById(R.id.beerLogo);
+        beerName = (TextView) findViewById(R.id.textName);
+        beerAlcohol = (TextView) findViewById(R.id.textAlcohol);
+        beerAvailability = (TextView) findViewById(R.id.textAvailability);
+        beerStyle = (TextView) findViewById(R.id.textStyle);
+        beerDescription = (TextView) findViewById(R.id.textDescription);
+        beerLogo = (ImageView) findViewById(R.id.beerLogo);
 
-        progressLoading = (ProgressBar) findViewById(R.id.progressLoading);
+        beerLoading = (ProgressBar) findViewById(R.id.progressLoading);
     }
 
     protected void onResume()
@@ -65,12 +65,12 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     @Override
     public void displayInfo(Beer beer) {
 
-        textName.setText(beer.getName());
-        textAlcohol.setText(beer.getAlcoholByVolume()+"%");
-        textAvailability.setText(beer.getAvailability());
-        textStyle.setText(beer.getStyle());
-        textDescription.setText(beer.getDescription());
-        imageLogo.setImageBitmap(beer.getLabel_medium());
+        beerName.setText(beer.getName());
+        beerAlcohol.setText(beer.getAlcoholByVolume()+"%");
+        beerAvailability.setText(beer.getAvailability());
+        beerStyle.setText(beer.getStyle());
+        beerDescription.setText(beer.getDescription());
+        beerLogo.setImageBitmap(beer.getLabel_medium());
 
         //int newColor = Color.rgb(0, 120, 255);
         int newColor = beer.getSrmColor();
@@ -82,9 +82,9 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     public void startSearchingProgress() {
 
         // PONER COSAS VISIBLES o INVISIBLES
-        progressLoading.setVisibility(View.VISIBLE);
+        beerLoading.setVisibility(View.VISIBLE);
         scrollView.setVisibility(View.INVISIBLE);
-        imageLogo.setVisibility(View.INVISIBLE);
+        beerLogo.setVisibility(View.INVISIBLE);
 
     }
 
@@ -92,9 +92,9 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     public void stopSearchingProgress() {
 
         // PONER COSAS VISIBLES o INVISIBLES
-        progressLoading.setVisibility(View.INVISIBLE);
+        beerLoading.setVisibility(View.INVISIBLE);
         scrollView.setVisibility(View.VISIBLE);
-        imageLogo.setVisibility(View.VISIBLE);
+        beerLogo.setVisibility(View.VISIBLE);
 
     }
 

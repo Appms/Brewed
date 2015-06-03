@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="This is the name"
-                android:id="@+id/textName"
+                android:id="@+id/breweryName"
                 android:textSize="30dp" />
 
             <TextView
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1994"
-                android:id="@+id/textEstablished"
+                android:id="@+id/breweryEstablished"
                 android:layout_marginTop="0dp"
                 android:textSize="30dp"
                 android:layout_alignTop="@+id/scrollView"
@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="www.google.es"
-                android:id="@+id/textWebsite"
+                android:id="@+id/breweryWebsite"
                 android:layout_marginTop="0dp"
                 android:textSize="30dp"
                 android:layout_alignTop="@+id/scrollView"
