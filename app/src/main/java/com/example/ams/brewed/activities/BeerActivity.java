@@ -1,51 +1,56 @@
 package com.example.ams.brewed.activities;
 
-import android.support.v7.app.ActionBarActivity;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.ams.brewed.IBeerView;
 import com.example.ams.brewed.R;
 
+
+
 public class BeerActivity extends ActionBarActivity implements IBeerView {
+
+    private RelativeLayout layoutBeer;
+
+    private TextView textName;
+    private TextView textAlcohol;
+    private TextView textAvailability;
+    private TextView textStyle;
+    private TextView textDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beer);
-    }
 
+        layoutBeer = (RelativeLayout) findViewById(R.id.layoutBeer);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_beer, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        textName = (TextView) findViewById(R.id.textName);
+        textAlcohol = (TextView) findViewById(R.id.textAlcohol);
+        textAvailability = (TextView) findViewById(R.id.textAvailability);
+        textStyle = (TextView) findViewById(R.id.textStyle);
+        textDescription = (TextView) findViewById(R.id.textDescription);
     }
 
     @Override
     public void changeBackgroundColorBySRM() {
 
+        int newColor = Color.rgb(0, 120, 255);
+        layoutBeer.setBackgroundColor(newColor);
+
     }
 
     @Override
     public void displayInfo() {
+
+        textName.setText("New name");
+        textAlcohol.setText("New %");
+        textAvailability.setText("New availability");
+        textStyle.setText("New style");
+        textDescription.setText("New description");
 
     }
 }
