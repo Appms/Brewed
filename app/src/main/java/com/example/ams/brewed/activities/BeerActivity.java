@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -21,7 +22,7 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     Viewmodel viewmodel;
     private Beer data;
 
-    private RelativeLayout layoutBeer;
+    private LinearLayout layoutBeer;
     private ScrollView scrollView;
 
     private TextView beerName;
@@ -39,7 +40,7 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         viewmodel = Viewmodel.getInstance();
         viewmodel.storeBeerActivity(this);
 
-        layoutBeer = (RelativeLayout) findViewById(R.id.layoutBeer);
+        layoutBeer = (LinearLayout) findViewById(R.id.layoutBeer);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
         beerName = (TextView) findViewById(R.id.textName);
@@ -49,13 +50,14 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         beerDescription = (TextView) findViewById(R.id.textDescription);
         beerLogo = (ImageView) findViewById(R.id.beerLogo);
 
-        beerLoading = (ProgressBar) findViewById(R.id.progressLoading);
+        beerLoading = (ProgressBar) findViewById(R.id.beerLoading);
     }
 
     protected void onResume()
     {
         super.onResume();
     }
+
 
     private void changeBackgroundColorBySRM(int newColor) {
 
@@ -100,11 +102,6 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     }
 
     @Override
-    public void changeBackgroundColorBySRM() {
-
-    }
-
-    @Override
     public void startShowInProgress() {
 
     }
@@ -114,6 +111,7 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
 
     }
 
+    @Override
     public void showError(String message) {
 
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

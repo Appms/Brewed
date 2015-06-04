@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity implements IMainView {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
+            getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).addToBackStack("preferenceTag").commit();
             return true;
         }
 
