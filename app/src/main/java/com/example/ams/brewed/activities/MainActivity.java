@@ -1,7 +1,9 @@
 package com.example.ams.brewed.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +18,7 @@ import android.widget.ToggleButton;
 import com.example.ams.brewed.R;
 import com.example.ams.brewed.interfaces.IMainView;
 import com.example.ams.brewed.Viewmodel;
+import com.example.ams.brewed.preferences.SettingsFragment;
 
 import static com.example.ams.brewed.Viewmodel.*;
 import static com.example.ams.brewed.Viewmodel.SearchType.*;
@@ -30,6 +33,10 @@ public class MainActivity extends ActionBarActivity implements IMainView {
         setContentView(R.layout.activity_main);
         viewmodel = getInstance();
         viewmodel.storeMainActivity(this);
+
+        //PreferenceManager.setDefaultValues(Context context, int resId, boolean readAgain);
+        //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //String bgNoteColor = preferences.getString(...);
     }
 
 
@@ -49,6 +56,7 @@ public class MainActivity extends ActionBarActivity implements IMainView {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
             return true;
         }
 

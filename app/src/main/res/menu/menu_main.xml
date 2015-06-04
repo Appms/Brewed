@@ -8,39 +8,7 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100"  />
 
-    <CheckBoxPreference
 
-        android:key="pref_opt1"
-
-        android:title="Opt 1"
-
-        android:summary="option1"
-
-        android:defaultValue="true"/>
-
-    <CheckBoxPreference
-
-        android:key="pref_opt2"
-
-        android:title="Opt 2"
-
-        android:summary="option2" />
-
-    <CheckBoxPreference
-
-        android:key="pref_opt3"
-
-        android:title="Opt 3"
-
-        android:summary="option3" />
-
-    <CheckBoxPreference
-
-        android:key="pref_opt4"
-
-        android:title="Opt 4"
-
-        android:summary="option4" />
 
 </menu>
 
