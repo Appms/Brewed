@@ -19,6 +19,7 @@ import com.example.ams.brewed.R;
 import com.example.ams.brewed.interfaces.IMainView;
 import com.example.ams.brewed.Viewmodel;
 import com.example.ams.brewed.preferences.SettingsFragment;
+import com.example.ams.brewed.preferences.WhiteActivity;
 
 import static com.example.ams.brewed.Viewmodel.*;
 import static com.example.ams.brewed.Viewmodel.SearchType.*;
@@ -56,7 +57,8 @@ public class MainActivity extends ActionBarActivity implements IMainView {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
+            Intent intent = new Intent(getApplicationContext(),WhiteActivity.class);
+            startActivity(intent);
             return true;
         }
 

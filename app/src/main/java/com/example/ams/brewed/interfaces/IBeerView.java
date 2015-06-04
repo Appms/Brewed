@@ -10,7 +10,6 @@ public interface IBeerView {
     void displayInfo(Beer beer);
     void startSearchingProgress();
     void stopSearchingProgress();
-    void changeBackgroundColorBySRM();
     void startShowInProgress();
     void stopShowSearchInProgress();
 

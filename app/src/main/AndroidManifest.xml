@@ -32,6 +32,10 @@
             android:name=".activities.BeerActivity"
             android:label="@string/title_activity_beer" >
         </activity>
+        <activity
+            android:name=".preferences.WhiteActivity"
+            android:label="@string/title_activity_beer" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
