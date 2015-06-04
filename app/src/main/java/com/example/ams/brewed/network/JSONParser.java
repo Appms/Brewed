@@ -128,8 +128,10 @@ public class JSONParser{
 
                 try{
                     JSONObject labelData = beerData.getJSONObject(BEER_LABEL_ID);
-                    label_icon = getBitmapFromURL(labelData.getString(BEER_LABEL_ICON_ID));
-                    label_medium = getBitmapFromURL(labelData.getString(BEER_LABEL_MEDIUM_ID));
+                    label_icon = null;
+                    label_medium = null;
+                    //label_icon = getBitmapFromURL(labelData.getString(BEER_LABEL_ICON_ID));
+                    //label_medium = getBitmapFromURL(labelData.getString(BEER_LABEL_MEDIUM_ID));
                 } catch (JSONException e){
                     label_icon = null;
                     label_medium = null;
@@ -206,8 +208,10 @@ public class JSONParser{
 
         try{
             JSONObject labelData = beerData.getJSONObject(BEER_LABEL_ID);
-            label_icon = getBitmapFromURL(labelData.getString(BEER_LABEL_ICON_ID));
-            label_medium = getBitmapFromURL(labelData.getString(BEER_LABEL_MEDIUM_ID));
+            label_icon = null;
+            label_medium = null;
+            //label_icon = getBitmapFromURL(labelData.getString(BEER_LABEL_ICON_ID));
+            //label_medium = getBitmapFromURL(labelData.getString(BEER_LABEL_MEDIUM_ID));
         } catch (JSONException e){
             label_icon = null;
             label_medium = null;
@@ -251,8 +255,10 @@ public class JSONParser{
 
                 try{
                     JSONObject imageData = breweryData.getJSONObject(BREWERY_IMAGES_ID);
-                    image_icon = getBitmapFromURL(imageData.getString(BREWERY_IMAGES_ICON_ID));
-                    image_medium = getBitmapFromURL(imageData.getString(BREWERY_IMAGES_MEDIUM_ID));
+                    image_icon = null;
+                    image_medium = null;
+                    //image_icon = getBitmapFromURL(imageData.getString(BREWERY_IMAGES_ICON_ID));
+                    //image_medium = getBitmapFromURL(imageData.getString(BREWERY_IMAGES_MEDIUM_ID));
                 } catch (JSONException e){
                     image_icon = null;
                     image_medium = null;
@@ -307,8 +313,10 @@ public class JSONParser{
 
                 try{
                     JSONObject imageData = breweryData.getJSONObject(BREWERY_IMAGES_ID);
-                    image_icon = getBitmapFromURL(imageData.getString(BREWERY_IMAGES_ICON_ID));
-                    image_medium = getBitmapFromURL(imageData.getString(BREWERY_IMAGES_MEDIUM_ID));
+                    image_icon = null;
+                    image_medium = null;
+                    //image_icon = getBitmapFromURL(imageData.getString(BREWERY_IMAGES_ICON_ID));
+                    //image_medium = getBitmapFromURL(imageData.getString(BREWERY_IMAGES_MEDIUM_ID));
                 } catch (JSONException e){
                     image_icon = null;
                     image_medium = null;

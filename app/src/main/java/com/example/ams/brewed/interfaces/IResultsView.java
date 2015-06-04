@@ -10,10 +10,6 @@ import com.example.ams.brewed.data.SearchElement;
  */
 public interface IResultsView {
 
-    void searchBeer(String input);
-    void searchRandomBeer();
-    void searchBrewery(String input);
-    void searchGeographicalBreweries();
     void showBeerResults(Beer[] response);
     void showBreweryResults(Brewery[] response);
 
@@ -23,7 +19,6 @@ public interface IResultsView {
 
     void stopShowSearchInProgress();
 
-    void warnBadNetwork();
 
     void showError(String message);
 
