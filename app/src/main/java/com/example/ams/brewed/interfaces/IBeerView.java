@@ -8,9 +8,7 @@ import com.example.ams.brewed.data.Beer;
 public interface IBeerView {
 
     void displayInfo(Beer beer);
-    void startSearchingProgress();
-    void stopSearchingProgress();
-    void startShowInProgress();
+    void startShowSearchInProgress();
     void stopShowSearchInProgress();
 
     void showError(String message);

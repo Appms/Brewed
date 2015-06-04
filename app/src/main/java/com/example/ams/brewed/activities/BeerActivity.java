@@ -1,7 +1,9 @@
 package com.example.ams.brewed.activities;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -53,8 +55,11 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         beerLoading = (ProgressBar) findViewById(R.id.beerLoading);
         beerLoading.setVisibility(View.INVISIBLE);
 
-        data = viewmodel.currentBeerData;
-        displayInfo(data);
+        if(viewmodel.currentSearchType == Viewmodel.SearchType.BEER) {
+            data = viewmodel.currentBeerData;
+            displayInfo(data);
+        }
+        else viewmodel.onRandomBeerSearchRequested();
     }
 
     protected void onResume()
@@ -72,46 +77,36 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     public void displayInfo(Beer beer) {
 
         beerName.setText(beer.getName());
-        if(beer.getAlcoholByVolume() < 0) beerAlcohol.setText(beer.getAlcoholByVolume()+"%");
+        if(beer.getAlcoholByVolume() > 0) beerAlcohol.setText(beer.getAlcoholByVolume()+"%");
         else beerAlcohol.setText("-");
         beerAvailability.setText(beer.getAvailability());
         beerStyle.setText(beer.getStyle());
         beerDescription.setText(beer.getDescription());
         beerLogo.setImageBitmap(beer.getLabel_medium());
 
-        int newColor = beer.getSrmColor();
-        changeBackgroundColorBySRM(newColor);
+        int newColor = 0xffffb259;
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean useSrmColor = preferences.getBoolean("backgroundBeer", true);
+
+        if(useSrmColor)
+            newColor = beer.getSrmColor();
+
+        changeBackgroundColorBySRM(newColor);
     }
 
     @Override
-    public void startSearchingProgress() {
-
-        // PONER COSAS VISIBLES o INVISIBLES
+    public void startShowSearchInProgress() {
         beerLoading.setVisibility(View.VISIBLE);
         scrollView.setVisibility(View.INVISIBLE);
         beerLogo.setVisibility(View.INVISIBLE);
-
-    }
-
-    @Override
-    public void stopSearchingProgress() {
-
-        // PONER COSAS VISIBLES o INVISIBLES
-        beerLoading.setVisibility(View.INVISIBLE);
-        scrollView.setVisibility(View.VISIBLE);
-        beerLogo.setVisibility(View.VISIBLE);
-
-    }
-
-    @Override
-    public void startShowInProgress() {
-
     }
 
     @Override
     public void stopShowSearchInProgress() {
-
+        beerLoading.setVisibility(View.INVISIBLE);
+        scrollView.setVisibility(View.VISIBLE);
+        beerLogo.setVisibility(View.VISIBLE);
     }
 
     @Override

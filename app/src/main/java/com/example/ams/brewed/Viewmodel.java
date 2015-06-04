@@ -21,7 +21,7 @@ import com.example.ams.brewed.interfaces.ResponseReceiver;
 public class Viewmodel {
 
     public static enum SearchType{
-        BEER, BREWERY, GEO
+        BEER, RANDOM, BREWERY, GEO
     }
 
     private IMainView mainView;
@@ -93,7 +93,7 @@ public class Viewmodel {
             public void onErrorReceived(String message) {
                 resultsView.stopShowSearchInProgress();
                 loadingResults = false;
-                resultsView.showBeerResults(null);
+                //resultsView.showBeerResults(null);
                 resultsView.showError(message);
             }
         });
@@ -117,7 +117,7 @@ public class Viewmodel {
             public void onErrorReceived(String message) {
                 resultsView.stopShowSearchInProgress();
                 loadingResults = false;
-                resultsView.showBreweryResults(null);
+                //resultsView.showBreweryResults(null);
                 resultsView.showError(message);
             }
         });
@@ -141,7 +141,7 @@ public class Viewmodel {
             public void onErrorReceived(String message) {
                 resultsView.stopShowSearchInProgress();
                 loadingResults = false;
-                resultsView.showBreweryResults(null);
+                //resultsView.showBreweryResults(null);
                 resultsView.showError(message);
             }
         });
@@ -150,7 +150,7 @@ public class Viewmodel {
     public void onRandomBeerSearchRequested(){
         if(beerView == null) return;
 
-        beerView.startShowInProgress();
+        beerView.startShowSearchInProgress();
         loadingRandomBeer = true;
 
         model.getRandomBeer(new ResponseReceiver<Beer>() {
@@ -159,13 +159,14 @@ public class Viewmodel {
                 beerView.stopShowSearchInProgress();
                 loadingRandomBeer = false;
                 beerView.displayInfo(response);
+                currentBeerData = response;
             }
 
             @Override
             public void onErrorReceived(String message) {
                 beerView.stopShowSearchInProgress();
                 loadingRandomBeer = false;
-                beerView.displayInfo(null);
+                //beerView.displayInfo(null);
                 beerView.showError(message);
             }
         });

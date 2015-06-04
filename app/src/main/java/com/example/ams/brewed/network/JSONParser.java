@@ -26,6 +26,7 @@ public class JSONParser{
 
     private static final String SEARCH_STATUS = "status";
     private static final String FAILURE = "failure";
+    private static final String NO_RESULTS = "No results were found";
     private static final String UNKNOWN_STRING = "unknown";
     private static final Double UNKNOWN_DOUBLE = -1D;
     private static final Integer UNKNOWN_INTEGER = -1;
@@ -92,6 +93,7 @@ public class JSONParser{
             }
             results= JSONPage.getJSONArray(BEER_SEARCH_RESULTS_ID);
         } catch (JSONException e){
+            receiver.onErrorReceived(NO_RESULTS);
             return;
         }
 
@@ -183,7 +185,7 @@ public class JSONParser{
             label_icon = null;
             label_medium = null;
             beer = new Beer(name,abv,srmColor,style,availability,description,label_icon,label_medium);
-            receiver.onResponseReceived(beer);
+            receiver.onErrorReceived(NO_RESULTS);
             return;
         }
 
@@ -235,6 +237,7 @@ public class JSONParser{
             }
             results= JSONPage.getJSONArray(BREWERY_SEARCH_RESULTS_ID);
         } catch (JSONException e){
+            receiver.onErrorReceived(NO_RESULTS);
             return;
         }
 
@@ -292,6 +295,7 @@ public class JSONParser{
             }
             results= JSONPage.getJSONArray(BREWERY_SEARCH_RESULTS_ID);
         } catch (JSONException e){
+            receiver.onErrorReceived(NO_RESULTS);
             return;
         }
 

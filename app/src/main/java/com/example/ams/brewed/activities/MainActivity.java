@@ -34,10 +34,6 @@ public class MainActivity extends ActionBarActivity implements IMainView {
         setContentView(R.layout.activity_main);
         viewmodel = getInstance();
         viewmodel.storeMainActivity(this);
-
-        //PreferenceManager.setDefaultValues(Context context, int resId, boolean readAgain);
-        //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //String bgNoteColor = preferences.getString(...);
     }
 
 
@@ -79,9 +75,7 @@ public class MainActivity extends ActionBarActivity implements IMainView {
     public void onPressedBrewerySearch(View view) {
         viewmodel.changeToResultsActivity(BREWERY);
     }
-    public void onPressedGeographicalBreweriesSearch(View view) {
-        viewmodel.changeToResultsActivity(GEO);
-    }
+    public void onPressedGeographicalBreweriesSearch(View view) {viewmodel.changeToResultsActivity(GEO);}
 
     @Override
     public void changeToResultsActivity() {
