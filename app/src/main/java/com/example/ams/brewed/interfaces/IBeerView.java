@@ -1,5 +1,7 @@
 package com.example.ams.brewed.interfaces;
 
+import android.graphics.Bitmap;
+
 import com.example.ams.brewed.data.Beer;
 
 /**
@@ -12,4 +14,6 @@ public interface IBeerView {
     void stopShowSearchInProgress();
 
     void showError(String message);
+
+    void updateLabel(Bitmap response);
 }

@@ -102,7 +102,7 @@ public class JSONParser{
             String name, style, availability, description;
             Double abv;
             Integer srmColor;
-            Bitmap label_icon, label_medium;
+            Bitmap label_icon;String label_medium;
 
             Beer beer;
 
@@ -133,9 +133,8 @@ public class JSONParser{
                 try{
                     JSONObject labelData = beerData.getJSONObject(BEER_LABEL_ID);
                     label_icon = null;
-                    label_medium = null;
                     //label_icon = getBitmapFromURL(labelData.getString(BEER_LABEL_ICON_ID));
-                    //label_medium = getBitmapFromURL(labelData.getString(BEER_LABEL_MEDIUM_ID));
+                    label_medium = labelData.getString(BEER_LABEL_MEDIUM_ID);
                 } catch (JSONException e){
                     label_icon = null;
                     label_medium = null;
@@ -163,10 +162,10 @@ public class JSONParser{
         JSONObject beerData;
         Beer beer;
 
-        String name, style, availability, description;
+        String name, style, availability, description, label_medium;
         Double abv;
         Integer srmColor;
-        Bitmap label_icon, label_medium;
+        Bitmap label_icon;
 
         try{
             searchStatus = JSONPage.getString(SEARCH_STATUS);
@@ -213,9 +212,8 @@ public class JSONParser{
         try{
             JSONObject labelData = beerData.getJSONObject(BEER_LABEL_ID);
             label_icon = null;
-            label_medium = null;
             //label_icon = getBitmapFromURL(labelData.getString(BEER_LABEL_ICON_ID));
-            //label_medium = getBitmapFromURL(labelData.getString(BEER_LABEL_MEDIUM_ID));
+            label_medium = labelData.getString(BEER_LABEL_MEDIUM_ID);
         } catch (JSONException e){
             label_icon = null;
             label_medium = null;

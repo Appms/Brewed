@@ -1,6 +1,8 @@
 package com.example.ams.brewed.network;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.example.ams.brewed.data.Beer;
 import com.example.ams.brewed.data.Brewery;
@@ -10,6 +12,7 @@ import com.example.ams.brewed.interfaces.ResponseReceiver;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -127,6 +130,22 @@ public class BreweryDB implements IBrewery {
                 } catch (JSONException e) {
                     receiver.onErrorReceived("Bad format in JSON(GEOGRAPHICAL BREWERY SEARCH)");
                 }
+            }
+
+            @Override
+            public void onErrorReceived(String message) {
+                receiver.onErrorReceived(message);
+            }
+        });
+    }
+
+    public void getLabel(String labelUrl, final ResponseReceiver<Bitmap> receiver){
+        url = labelUrl;
+
+        networkHelper.fetchImage(url, new ResponseReceiver<InputStream>() {
+            @Override
+            public void onResponseReceived(InputStream response) {
+                receiver.onResponseReceived(BitmapFactory.decodeStream(response));
             }
 
             @Override

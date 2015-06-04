@@ -1,6 +1,7 @@
 package com.example.ams.brewed.interfaces;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.example.ams.brewed.data.Beer;
 import com.example.ams.brewed.data.Brewery;
@@ -14,6 +15,7 @@ public interface IBrewery {
     void getRandomBeer(final ResponseReceiver<Beer> receiver);
     void getBrewerySearch(String name, final ResponseReceiver<Brewery[]> receiver);
     void getGeographicalBreweries(Double latitude, Double longitude, final ResponseReceiver<Brewery[]> receiver);
+    void getLabel(String url, final ResponseReceiver<Bitmap> receiver);
 
 }
 

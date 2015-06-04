@@ -1,6 +1,7 @@
 package com.example.ams.brewed;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -142,5 +143,19 @@ public class Model implements IModel {
                 }
             });
         }
+    }
+
+    public void getLabel(String url, final ResponseReceiver<Bitmap> receiver){
+        breweryDB.getLabel(url, new ResponseReceiver<Bitmap>() {
+            @Override
+            public void onResponseReceived(Bitmap response) {
+                receiver.onResponseReceived(response);
+            }
+
+            @Override
+            public void onErrorReceived(String message) {
+                receiver.onErrorReceived(message);
+            }
+        });
     }
 }

@@ -11,9 +11,9 @@ public class Beer  extends SearchElement{
     private final String style;
     private final String availability;
     private final String description;
-    private final Bitmap label_medium;
+    private final String label_medium;
 
-    public Beer(String name, Double alcoholByVolume, int srmColor, String style, String availability, String description, Bitmap label_icon, Bitmap label_medium) {
+    public Beer(String name, Double alcoholByVolume, int srmColor, String style, String availability, String description, Bitmap label_icon, String label_medium) {
         super(name,label_icon);
 
         this.alcoholByVolume = alcoholByVolume;
@@ -44,7 +44,7 @@ public class Beer  extends SearchElement{
         return description;
     }
 
-    public Bitmap getLabel_medium() {
+    public String getLabel_medium() {
         return label_medium;
     }
 }

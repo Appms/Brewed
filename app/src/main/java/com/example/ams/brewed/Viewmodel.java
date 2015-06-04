@@ -3,6 +3,7 @@ package com.example.ams.brewed;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 
 import com.example.ams.brewed.activities.ResultsActivity;
 import com.example.ams.brewed.data.Beer;
@@ -71,6 +72,22 @@ public class Viewmodel {
 
     public void storeBreweryActivity(IBreweryView breweryActivityView){
         breweryView = breweryActivityView;
+    }
+
+    //SEARCHING LABELS
+
+    public void onLabelSearchRequested(String url){
+        model.getLabel(url, new ResponseReceiver<Bitmap>() {
+            @Override
+            public void onResponseReceived(Bitmap response) {
+                beerView.updateLabel(response);
+            }
+
+            @Override
+            public void onErrorReceived(String message) {
+                beerView.showError(message);
+            }
+        });
     }
 
     //SEARCHING BEERS/BREWERIES

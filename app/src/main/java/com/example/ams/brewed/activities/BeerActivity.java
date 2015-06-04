@@ -1,6 +1,7 @@
 package com.example.ams.brewed.activities;
 
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -82,7 +83,7 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         beerAvailability.setText(beer.getAvailability());
         beerStyle.setText(beer.getStyle());
         beerDescription.setText(beer.getDescription());
-        beerLogo.setImageBitmap(beer.getLabel_medium());
+        if(beer.getLabel_medium() != null) viewmodel.onLabelSearchRequested(beer.getLabel_medium());
 
         int newColor = Color.rgb(255,178,89);
 
@@ -114,6 +115,11 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
 
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void updateLabel(Bitmap response) {
+        beerLogo.setImageBitmap(response);
     }
 
 }

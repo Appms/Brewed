@@ -61,8 +61,29 @@ public class NetworkHelper {
                 is.close();
             }
         }
+    }
 
+    private static InputStream downloadImage (String myurl) throws IOException {
+        InputStream is = null;
 
+        try{
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000 /*miliseconds*/);
+            conn.setConnectTimeout(15000 /*miliseconds*/);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+
+            //Starts the query
+            conn.connect();
+            is = conn.getInputStream();
+
+            return is;
+        } finally {
+            if (is != null) {
+                is.close();
+            }
+        }
     }
 
     public void fetchWebPage(String url,
@@ -93,6 +114,37 @@ public class NetworkHelper {
                         pageProcessor.onResponseReceived(result);
                     else
                         pageProcessor.onErrorReceived(result);
+                }
+            }.execute(url);
+        }
+    }
+
+    public void fetchImage(String url, final ResponseReceiver<InputStream> stream){
+        if(!isNetworkConnected())
+            stream.onErrorReceived("No Network Access");
+
+        else {
+            new AsyncTask<String, Void, Boolean>(){
+
+                InputStream result;
+
+                @Override
+                protected Boolean doInBackground(String... urls){
+                    try {
+                        result = downloadImage(urls[0]);
+                        return true;
+                    } catch (IOException e) {
+                        result = null;
+                        return false;
+                    }
+                }
+
+                @Override
+                protected void onPostExecute(Boolean taskOk){
+                    if(taskOk)
+                        stream.onResponseReceived(result);
+                    else
+                        stream.onErrorReceived("Network Error");
                 }
             }.execute(url);
         }
