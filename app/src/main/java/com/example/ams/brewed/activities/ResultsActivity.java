@@ -68,8 +68,8 @@ public class ResultsActivity extends ActionBarActivity implements IResultsView {
     protected void onResume()
     {
         super.onResume();
-        searchType = viewmodel.currentSearchType;
-        changeSearchType(searchType);
+        //searchType = viewmodel.currentSearchType;
+        //changeSearchType(searchType);
     }
 
     //ASKING FOR A BEER // BREWERY

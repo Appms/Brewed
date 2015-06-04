@@ -21,7 +21,7 @@ import com.example.ams.brewed.interfaces.ResponseReceiver;
 public class Viewmodel {
 
     public static enum SearchType{
-        BEER, BREWERY, GEO
+        BEER, RANDOM, BREWERY, GEO
     }
 
     private IMainView mainView;
@@ -150,7 +150,7 @@ public class Viewmodel {
     public void onRandomBeerSearchRequested(){
         if(beerView == null) return;
 
-        beerView.startShowInProgress();
+        beerView.startShowSearchInProgress();
         loadingRandomBeer = true;
 
         model.getRandomBeer(new ResponseReceiver<Beer>() {
@@ -159,6 +159,7 @@ public class Viewmodel {
                 beerView.stopShowSearchInProgress();
                 loadingRandomBeer = false;
                 beerView.displayInfo(response);
+                currentBeerData = response;
             }
 
             @Override

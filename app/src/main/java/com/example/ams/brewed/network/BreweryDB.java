@@ -20,7 +20,7 @@ public class BreweryDB implements IBrewery {
     private final static String BEER_SEARCH_URL = "http://api.brewerydb.com/v2/search?type=beer&key=813c42beda1341be01f1147489c82904&format=json&q=";
     private final static String RANDOM_BEER_URL = "http://api.brewerydb.com/v2/beer/random?key=813c42beda1341be01f1147489c82904&format=json";
     private final static String BREWERY_SEARCH_URL = "http://api.brewerydb.com/v2/search?type=brewery&key=813c42beda1341be01f1147489c82904&format=json&q=";
-    private final static String GEOGRAPHICAL_BREWERY_URL = "http://api.brewerydb.com/v2/search/geo/point?key=813c42beda1341be01f1147489c82904&format=json&";
+    private final static String GEOGRAPHICAL_BREWERY_URL = "http://api.brewerydb.com/v2/search/geo/point?key=813c42beda1341be01f1147489c82904&format=json&lat=";
 
     private NetworkHelper networkHelper = null;
 
@@ -109,8 +109,12 @@ public class BreweryDB implements IBrewery {
 
     @Override
     public void getGeographicalBreweries(Double latitude, Double longitude, final ResponseReceiver<Brewery[]> receiver) {
+        Double mockLat = 40.415363;
+        Double mockLng = -3.707398;
+
         try {
-            url = GEOGRAPHICAL_BREWERY_URL + URLEncoder.encode("lat=" + String.valueOf(latitude) + "&lng=" + String.valueOf(longitude), "UTF-8");
+            url = GEOGRAPHICAL_BREWERY_URL + URLEncoder.encode(String.valueOf(latitude), "UTF-8") + "&lng=" + URLEncoder.encode(String.valueOf(longitude),"UTF-8");
+            mockLat = 0D;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

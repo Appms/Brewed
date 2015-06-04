@@ -18,13 +18,12 @@ import com.example.ams.brewed.interfaces.IBreweryView;
 public class BreweryActivity extends ActionBarActivity implements IBreweryView{
 
     private Viewmodel viewmodel;
+    private Brewery data;
 
     private TextView breweryName;
     private TextView breweryEstablished;
     private TextView breweryWebsite;
     private ImageView breweryLogo;
-
-    //private ProgressBar progressLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +37,8 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView{
         breweryWebsite = (TextView) findViewById(R.id.breweryWebsite);
         breweryLogo = (ImageView) findViewById(R.id.breweryLogo);
 
-        //progressLoading = (ProgressBar) findViewById(R.id.progressLoading);
-
+        data = viewmodel.currentBreweryData;
+        displayInfo(data);
     }
 
     protected void onResume()
