@@ -46,11 +46,15 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         beerName = (TextView) findViewById(R.id.beerName);
         beerAlcohol = (TextView) findViewById(R.id.beerAlcohol);
         beerAvailability = (TextView) findViewById(R.id.beerAvailability);
-        beerStyle = (TextView) findViewById(R.id.beerAvailability);
-        beerDescription = (TextView) findViewById(R.id.beerAvailability);
+        beerStyle = (TextView) findViewById(R.id.beerStyle);
+        beerDescription = (TextView) findViewById(R.id.beerDescription);
         beerLogo = (ImageView) findViewById(R.id.beerLogo);
 
         beerLoading = (ProgressBar) findViewById(R.id.beerLoading);
+        beerLoading.setVisibility(View.INVISIBLE);
+
+        data = viewmodel.currentBeerData;
+        displayInfo(data);
     }
 
     protected void onResume()
@@ -62,20 +66,19 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
     private void changeBackgroundColorBySRM(int newColor) {
 
         layoutBeer.setBackgroundColor(newColor);
-
     }
 
     @Override
     public void displayInfo(Beer beer) {
 
         beerName.setText(beer.getName());
-        beerAlcohol.setText(beer.getAlcoholByVolume()+"%");
+        if(beer.getAlcoholByVolume() < 0) beerAlcohol.setText(beer.getAlcoholByVolume()+"%");
+        else beerAlcohol.setText("-");
         beerAvailability.setText(beer.getAvailability());
         beerStyle.setText(beer.getStyle());
         beerDescription.setText(beer.getDescription());
         beerLogo.setImageBitmap(beer.getLabel_medium());
 
-        //int newColor = Color.rgb(0, 120, 255);
         int newColor = beer.getSrmColor();
         changeBackgroundColorBySRM(newColor);
 

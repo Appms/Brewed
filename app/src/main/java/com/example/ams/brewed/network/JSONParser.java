@@ -31,6 +31,8 @@ public class JSONParser{
     private static final Integer UNKNOWN_INTEGER = -1;
     //private static final Bitmap UNKNOWN_BITMAP =  BitmapFactory.decodeResource(getResources(),R.drawable.icon_splash);
 
+    private static final Integer ALPHA_HEX_VALUE = 0xFF000000;
+
     //BEER SEARCH
 
     private static final String BEER_SEARCH_RESULTS_ID = "data";
@@ -111,7 +113,7 @@ public class JSONParser{
 
                 try {
                     JSONObject srmData = beerData.getJSONObject(BEER_STANDARD_REFERENCE_METHOD_ID);
-                    srmColor = Integer.parseInt(srmData.getString(BEER_STANDARD_REFERENCE_METHOD_HEX_ID).substring(2), 16);
+                    srmColor = ALPHA_HEX_VALUE + Integer.parseInt(srmData.getString(BEER_STANDARD_REFERENCE_METHOD_HEX_ID), 16);
                 } catch (JSONException e) {srmColor = UNKNOWN_INTEGER;}
 
                 try {
@@ -191,7 +193,7 @@ public class JSONParser{
 
         try {
             JSONObject srmData = beerData.getJSONObject(BEER_STANDARD_REFERENCE_METHOD_ID);
-            srmColor = Integer.parseInt(srmData.getString(BEER_STANDARD_REFERENCE_METHOD_HEX_ID).substring(2), 16);
+            srmColor = ALPHA_HEX_VALUE + Integer.parseInt(srmData.getString(BEER_STANDARD_REFERENCE_METHOD_HEX_ID), 16);
         } catch (JSONException e) {srmColor = UNKNOWN_INTEGER;}
 
         try {
