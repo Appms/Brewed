@@ -24,7 +24,7 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView{
     private TextView breweryWebsite;
     private ImageView breweryLogo;
 
-    private ProgressBar progressLoading;
+    //private ProgressBar progressLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView{
         breweryWebsite = (TextView) findViewById(R.id.breweryWebsite);
         breweryLogo = (ImageView) findViewById(R.id.breweryLogo);
 
-        progressLoading = (ProgressBar) findViewById(R.id.progressLoading);
+        //progressLoading = (ProgressBar) findViewById(R.id.progressLoading);
 
     }
 
