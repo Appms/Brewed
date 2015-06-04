@@ -17,10 +17,10 @@ import java.net.URLEncoder;
  * Created by AMS on 14/05/2015.
  */
 public class BreweryDB implements IBrewery {
-    private final static String BEER_SEARCH_URL = "http://api.brewerydb.com/v2/search?type=beer&key=813c42beda1341be01f1147489c82904&q=";
-    private final static String RANDOM_BEER_URL = "http://api.brewerydb.com/v2/beer/random?key=813c42beda1341be01f1147489c82904";
-    private final static String BREWERY_SEARCH_URL = "http://api.brewerydb.com/v2/search?type=brewery&key=813c42beda1341be01f1147489c82904&q=";
-    private final static String GEOGRAPHICAL_BREWERY_URL = "http://api.brewerydb.com/v2/search/geo/point?key=813c42beda1341be01f1147489c82904&";
+    private final static String BEER_SEARCH_URL = "http://api.brewerydb.com/v2/search?type=beer&key=813c42beda1341be01f1147489c82904&format=json&q=";
+    private final static String RANDOM_BEER_URL = "http://api.brewerydb.com/v2/beer/random?key=813c42beda1341be01f1147489c82904&format=json";
+    private final static String BREWERY_SEARCH_URL = "http://api.brewerydb.com/v2/search?type=brewery&key=813c42beda1341be01f1147489c82904&format=json&q=";
+    private final static String GEOGRAPHICAL_BREWERY_URL = "http://api.brewerydb.com/v2/search/geo/point?key=813c42beda1341be01f1147489c82904&format=json&";
 
     private NetworkHelper networkHelper = null;
 

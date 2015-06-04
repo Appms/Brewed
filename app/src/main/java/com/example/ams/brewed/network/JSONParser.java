@@ -61,10 +61,15 @@ public class JSONParser{
     public static Bitmap getBitmapFromURL(String src) {
         try {
             URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000 /*miliseconds*/);
+            conn.setConnectTimeout(15000 /*miliseconds*/);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+
+            conn.connect();
+            InputStream input = conn.getInputStream();
+
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
             return myBitmap;
         } catch (IOException e) {
@@ -115,7 +120,7 @@ public class JSONParser{
                 } catch (JSONException e) {style = UNKNOWN_STRING;}
 
                 try {
-                    JSONObject availabilityData = beerData.optJSONObject(BEER_AVAILABILITY_ID);
+                    JSONObject availabilityData = beerData.getJSONObject(BEER_AVAILABILITY_ID);
                     availability = availabilityData.getString(BEER_AVAILABILITY_NAME_ID);
                 } catch (JSONException e) {availability = UNKNOWN_STRING;}
 
@@ -193,7 +198,7 @@ public class JSONParser{
         } catch (JSONException e) {style = UNKNOWN_STRING;}
 
         try {
-            JSONObject availabilityData = beerData.optJSONObject(BEER_AVAILABILITY_ID);
+            JSONObject availabilityData = beerData.getJSONObject(BEER_AVAILABILITY_ID);
             availability = availabilityData.getString(BEER_AVAILABILITY_NAME_ID);
         } catch (JSONException e) {availability = UNKNOWN_STRING;}
 

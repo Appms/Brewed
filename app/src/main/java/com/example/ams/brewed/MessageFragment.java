@@ -37,6 +37,7 @@ public class MessageFragment extends DialogFragment {
                         break;
                     case BREWERY:
                         Viewmodel.getInstance().onBrewerySearchRequested(criteriaField.getText().toString());
+                        break;
                 }
             }
         });
