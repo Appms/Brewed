@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/beerLogo"
-        android:src="@drawable/icon_splash"
+        android:src="@drawable/beer_icon"
         android:background="#ffbb9f72"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -26,7 +26,8 @@
         android:layout_weight="1"
         android:layout_margin="10dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp" />
+        android:layout_marginRight="0dp"
+        android:scaleType="fitCenter" />
 
     <ScrollView
         android:layout_width="match_parent"

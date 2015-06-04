@@ -12,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/breweryLogo"
-        android:src="@drawable/icon_splash"
+        android:src="@drawable/brewery_icon"
         android:background="#ffbb9f72"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_weight="1"
-        android:layout_margin="10dp" />
+        android:layout_margin="10dp"
+        android:scaleType="fitCenter" />
 
     <ScrollView
         android:layout_width="match_parent"

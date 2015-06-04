@@ -1,7 +1,9 @@
 package com.example.ams.brewed.activities;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -43,11 +45,11 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         layoutBeer = (LinearLayout) findViewById(R.id.layoutBeer);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
-        beerName = (TextView) findViewById(R.id.textName);
-        beerAlcohol = (TextView) findViewById(R.id.textAlcohol);
-        beerAvailability = (TextView) findViewById(R.id.textAvailability);
-        beerStyle = (TextView) findViewById(R.id.textStyle);
-        beerDescription = (TextView) findViewById(R.id.textDescription);
+        beerName = (TextView) findViewById(R.id.beerName);
+        beerAlcohol = (TextView) findViewById(R.id.beerAlcohol);
+        beerAvailability = (TextView) findViewById(R.id.beerAvailability);
+        beerStyle = (TextView) findViewById(R.id.beerStyle);
+        beerDescription = (TextView) findViewById(R.id.beerDescription);
         beerLogo = (ImageView) findViewById(R.id.beerLogo);
 
         beerLoading = (ProgressBar) findViewById(R.id.beerLoading);
@@ -75,8 +77,14 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         beerDescription.setText(beer.getDescription());
         beerLogo.setImageBitmap(beer.getLabel_medium());
 
-        //int newColor = Color.rgb(0, 120, 255);
-        int newColor = beer.getSrmColor();
+        int newColor = Color.rgb(0, 120, 255);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean backgroundBeer = preferences.getBoolean("backgroundBeer", false);
+
+        if (backgroundBeer) {
+            newColor = beer.getSrmColor();
+        }
+
         changeBackgroundColorBySRM(newColor);
 
     }
