@@ -115,7 +115,7 @@ public class JSONParser{
                 } catch (JSONException e) {style = UNKNOWN_STRING;}
 
                 try {
-                    JSONObject availabilityData = beerData.optJSONObject(BEER_AVAILABILITY_ID);
+                    JSONObject availabilityData = beerData.getJSONObject(BEER_AVAILABILITY_ID);
                     availability = availabilityData.getString(BEER_AVAILABILITY_NAME_ID);
                 } catch (JSONException e) {availability = UNKNOWN_STRING;}
 
@@ -193,7 +193,7 @@ public class JSONParser{
         } catch (JSONException e) {style = UNKNOWN_STRING;}
 
         try {
-            JSONObject availabilityData = beerData.optJSONObject(BEER_AVAILABILITY_ID);
+            JSONObject availabilityData = beerData.getJSONObject(BEER_AVAILABILITY_ID);
             availability = availabilityData.getString(BEER_AVAILABILITY_NAME_ID);
         } catch (JSONException e) {availability = UNKNOWN_STRING;}
 
