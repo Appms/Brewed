@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Enter Search Field"
+        android:text="Search..."
         android:id="@+id/searchCriteria"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -21,7 +21,10 @@
         android:clickable="true"
         android:onClick="onSearchCriteriaPressed"
         android:layout_margin="0dp"
-        android:background="#ffff9159" />
+        android:background="#ffff9159"
+        android:textStyle="bold"
+        android:elegantTextHeight="false"
+        android:elevation="10dp" />
 
     <FrameLayout
         android:layout_width="match_parent"

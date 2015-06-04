@@ -113,8 +113,8 @@ public class BreweryDB implements IBrewery {
         Double mockLng = -3.707398;
 
         try {
-            url = GEOGRAPHICAL_BREWERY_URL + URLEncoder.encode(String.valueOf(latitude), "UTF-8") + "&lng=" + URLEncoder.encode(String.valueOf(longitude),"UTF-8");
-            mockLat = 0D;
+            url = GEOGRAPHICAL_BREWERY_URL + URLEncoder.encode(String.valueOf(mockLat), "UTF-8") + "&lng=" + URLEncoder.encode(String.valueOf(mockLng),"UTF-8"); //MOCK
+            //url = GEOGRAPHICAL_BREWERY_URL + URLEncoder.encode(String.valueOf(latitude), "UTF-8") + "&lng=" + URLEncoder.encode(String.valueOf(longitude),"UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

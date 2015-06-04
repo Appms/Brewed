@@ -68,8 +68,14 @@ public class ResultsActivity extends ActionBarActivity implements IResultsView {
     protected void onResume()
     {
         super.onResume();
-        if(searchType == Viewmodel.SearchType.BEER && currentBeerData != null) showBeerResults(currentBeerData);
-        else if (currentBreweryData != null) showBreweryResults(currentBreweryData);
+        if(searchType == Viewmodel.SearchType.BEER && currentBeerData != null) {
+            showBeerResults(currentBeerData);
+            searchCriteria.setText(viewmodel.currentSearchString);
+        }
+        else if (currentBreweryData != null) {
+            showBreweryResults(currentBreweryData);
+            searchCriteria.setText(viewmodel.currentSearchString);
+        }
     }
 
     //ASKING FOR A BEER // BREWERY
@@ -87,6 +93,7 @@ public class ResultsActivity extends ActionBarActivity implements IResultsView {
 
     @Override
     public void startShowSearchInProgress() {
+        if(searchType != Viewmodel.SearchType.GEO) searchCriteria.setText(viewmodel.currentSearchString);
         listView.setVisibility(View.INVISIBLE);
         searching.setVisibility(View.VISIBLE);
     }
@@ -140,9 +147,11 @@ public class ResultsActivity extends ActionBarActivity implements IResultsView {
             searchCriteria.setEnabled(false);
             searchCriteria.setText("Geo-Breweries");
         } else {
+            currentBeerData = viewmodel.currentBeerSearchData;
+            currentBreweryData = viewmodel.currentBrewerySearchData;
             searchCriteria.setClickable(true);
             searchCriteria.setEnabled(true);
-            searchCriteria.setText("Enter Search Field");
+            searchCriteria.setText("Search...");
         }
     }
 

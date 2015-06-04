@@ -33,9 +33,11 @@ public class MessageFragment extends DialogFragment {
             public void onClick(DialogInterface dialog, int which) {
                 switch (Viewmodel.getInstance().currentSearchType){
                     case BEER:
+                        Viewmodel.getInstance().currentSearchString = criteriaField.getText().toString();
                         Viewmodel.getInstance().onBeerSearchRequested(criteriaField.getText().toString());
                         break;
                     case BREWERY:
+                        Viewmodel.getInstance().currentSearchString = criteriaField.getText().toString();
                         Viewmodel.getInstance().onBrewerySearchRequested(criteriaField.getText().toString());
                         break;
                 }

@@ -39,6 +39,10 @@ public class Viewmodel {
     public SearchType currentSearchType;
     public Beer currentBeerData;
     public Brewery currentBreweryData;
+    public String currentSearchString;
+
+    public Beer[] currentBeerSearchData;
+    public Brewery[] currentBrewerySearchData;
 
     private Viewmodel (IModel model){
         this.model = model;
@@ -84,6 +88,7 @@ public class Viewmodel {
         model.getBeerSearch(criteria, new ResponseReceiver<Beer[]>() {
             @Override
             public void onResponseReceived(Beer[] response) {
+                currentBeerSearchData = response;
                 resultsView.stopShowSearchInProgress();
                 loadingResults = false;
                 resultsView.showBeerResults(response);
@@ -108,6 +113,7 @@ public class Viewmodel {
         model.getBrewerySearch(criteria, new ResponseReceiver<Brewery[]>() {
             @Override
             public void onResponseReceived(Brewery[] response) {
+                currentBrewerySearchData = response;
                 resultsView.stopShowSearchInProgress();
                 loadingResults = false;
                 resultsView.showBreweryResults(response);

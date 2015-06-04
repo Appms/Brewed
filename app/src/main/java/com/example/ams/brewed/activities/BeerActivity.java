@@ -84,12 +84,12 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         beerDescription.setText(beer.getDescription());
         beerLogo.setImageBitmap(beer.getLabel_medium());
 
-        int newColor = 0xffffb259;
+        int newColor = Color.rgb(255,178,89);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         Boolean useSrmColor = preferences.getBoolean("backgroundBeer", true);
 
-        if(useSrmColor)
+        if(useSrmColor && beer.getSrmColor() != -1)
             newColor = beer.getSrmColor();
 
         changeBackgroundColorBySRM(newColor);

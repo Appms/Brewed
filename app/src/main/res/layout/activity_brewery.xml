@@ -99,8 +99,7 @@
                 android:textSize="30dp"
                 android:layout_alignTop="@+id/scrollView"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal"
-                android:autoLink="web" />
+                android:gravity="center_horizontal" />
 
         </LinearLayout>
     </ScrollView>
