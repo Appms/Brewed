@@ -93,7 +93,7 @@ public class Viewmodel {
             public void onErrorReceived(String message) {
                 resultsView.stopShowSearchInProgress();
                 loadingResults = false;
-                resultsView.showBeerResults(null);
+                //resultsView.showBeerResults(null);
                 resultsView.showError(message);
             }
         });
@@ -117,7 +117,7 @@ public class Viewmodel {
             public void onErrorReceived(String message) {
                 resultsView.stopShowSearchInProgress();
                 loadingResults = false;
-                resultsView.showBreweryResults(null);
+                //resultsView.showBreweryResults(null);
                 resultsView.showError(message);
             }
         });
@@ -141,7 +141,7 @@ public class Viewmodel {
             public void onErrorReceived(String message) {
                 resultsView.stopShowSearchInProgress();
                 loadingResults = false;
-                resultsView.showBreweryResults(null);
+                //resultsView.showBreweryResults(null);
                 resultsView.showError(message);
             }
         });
@@ -166,7 +166,7 @@ public class Viewmodel {
             public void onErrorReceived(String message) {
                 beerView.stopShowSearchInProgress();
                 loadingRandomBeer = false;
-                beerView.displayInfo(null);
+                //beerView.displayInfo(null);
                 beerView.showError(message);
             }
         });
