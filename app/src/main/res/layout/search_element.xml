@@ -9,6 +9,8 @@
         android:layout_height="wrap_content"
         android:paddingRight="10sp"
         android:layout_gravity="center_vertical"
+        android:textSize="30dp"
+        android:layout_margin="5dp"
         style="@style/AppTheme"
         />
 
