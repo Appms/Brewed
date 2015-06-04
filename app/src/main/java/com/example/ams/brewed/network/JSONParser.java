@@ -61,10 +61,15 @@ public class JSONParser{
     public static Bitmap getBitmapFromURL(String src) {
         try {
             URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000 /*miliseconds*/);
+            conn.setConnectTimeout(15000 /*miliseconds*/);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+
+            conn.connect();
+            InputStream input = conn.getInputStream();
+
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
             return myBitmap;
         } catch (IOException e) {
