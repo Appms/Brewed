@@ -82,7 +82,7 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         beerAvailability.setText(beer.getAvailability());
         beerStyle.setText(beer.getStyle());
         beerDescription.setText(beer.getDescription());
-        beerLogo.setImageBitmap(beer.getLabel_medium());
+        //beerLogo.setImageBitmap(beer.getLabel_medium());
 
         int newColor = Color.rgb(255,178,89);
 

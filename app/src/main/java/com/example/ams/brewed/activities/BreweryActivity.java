@@ -52,7 +52,7 @@ public class BreweryActivity extends ActionBarActivity implements IBreweryView{
         breweryName.setText(brewery.getName());
         breweryEstablished.setText(""+brewery.getEstablished());
         breweryWebsite.setText(brewery.getWebsite());
-        breweryLogo.setImageBitmap(brewery.getLabel_medium());
+        //breweryLogo.setImageBitmap(brewery.getLabel_medium());
 
     }
 }
