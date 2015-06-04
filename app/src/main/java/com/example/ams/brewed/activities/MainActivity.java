@@ -71,13 +71,13 @@ public class MainActivity extends ActionBarActivity implements IMainView {
     public void onPressedBeerSearch(View view) {
         viewmodel.changeToResultsActivity(BEER);
     }
-    public void onPressedRandomBeer(View view) {
+    public void onPressedRandomBeerSearch(View view) {
         viewmodel.changeToRandomBeerActivity();
     }
     public void onPressedBrewerySearch(View view) {
         viewmodel.changeToResultsActivity(BREWERY);
     }
-    public void onPressedGeographicalBreweries(View view) {
+    public void onPressedGeographicalBreweriesSearch(View view) {
         viewmodel.changeToResultsActivity(GEO);
     }
 
