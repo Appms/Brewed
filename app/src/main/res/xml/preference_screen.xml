@@ -3,15 +3,16 @@
 android:background="#aaaaaa">
 
     <PreferenceCategory
-        android:title="PreferenceCategory A">
+        android:title="Settings">
 
         <CheckBoxPreference
-            android:key="checkbox_preference"
-            android:title="title_checkbox_preference"
-            android:summary="summary_checkbox_preference" />
+            android:key="backgroundBeer"
+            android:title="Use beer color as background color"
+            android:summary="(If there's a valid beer color)" />
 
     </PreferenceCategory>
 
+    <!--
     <PreferenceCategory
         android:title="PreferenceCategory B">
 
@@ -22,5 +23,6 @@ android:background="#aaaaaa">
             android:dialogTitle="dialog_title_edittext_preference" />
 
     </PreferenceCategory>
+    -->
 
 </PreferenceScreen>
