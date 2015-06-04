@@ -43,11 +43,11 @@ public class BeerActivity extends ActionBarActivity implements IBeerView {
         layoutBeer = (LinearLayout) findViewById(R.id.layoutBeer);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
-        beerName = (TextView) findViewById(R.id.textName);
-        beerAlcohol = (TextView) findViewById(R.id.textAlcohol);
-        beerAvailability = (TextView) findViewById(R.id.textAvailability);
-        beerStyle = (TextView) findViewById(R.id.textStyle);
-        beerDescription = (TextView) findViewById(R.id.textDescription);
+        beerName = (TextView) findViewById(R.id.beerName);
+        beerAlcohol = (TextView) findViewById(R.id.beerAlcohol);
+        beerAvailability = (TextView) findViewById(R.id.beerAvailability);
+        beerStyle = (TextView) findViewById(R.id.beerAvailability);
+        beerDescription = (TextView) findViewById(R.id.beerAvailability);
         beerLogo = (ImageView) findViewById(R.id.beerLogo);
 
         beerLoading = (ProgressBar) findViewById(R.id.beerLoading);
